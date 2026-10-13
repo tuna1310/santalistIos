@@ -1,169 +1,182 @@
 # 🎅 SantaList: Gift Tracker (iOS Native)
 
-> **"Quà đúng người, đúng hạn, đúng ngân sách"**
+> **"Gifts for the right people, on time, on budget"**
 
-Ứng dụng quản lý quà tặng Giáng sinh và các dịp lễ hội thuần **iOS Native (Swift 5.9+ & SwiftUI)**, lưu trữ dữ liệu hoàn toàn trên máy bằng **SwiftData**, biểu đồ trực quan với **Swift Charts**, nhắc lịch thông minh qua **UserNotifications**.
+A pure **iOS Native (Swift 5.9+ & SwiftUI)** gift tracking application designed for Christmas and festive occasions. Engineered with 100% offline-first storage using **SwiftData**, interactive charts with **Swift Charts**, and intelligent local reminders via **UserNotifications**.
 
-Ứng dụng không sử dụng bất kỳ thư viện bên thứ ba nào (không CocoaPods, không SPM ngoài Apple SDK), bảo mật riêng tư tuyệt đối (offline-first, không gọi mạng, không analytics, tuân thủ `PrivacyInfo.xcprivacy`).
+Built strictly with zero third-party dependencies (no CocoaPods, no SPM packages beyond Apple SDKs). Maximum privacy with zero network calls, no tracking, and fully compliant with Apple's `PrivacyInfo.xcprivacy`.
 
 ---
 
-## 📸 Giao diện ứng dụng (Screenshots)
+## 📸 App Screenshots
 
-| Tab | Chế độ Sáng (Light Mode) | Chế độ Tối (Dark Mode) |
+| View | Light Appearance | Dark Appearance |
 | :--- | :---: | :---: |
-| **Tab 1: Người nhận**<br>Quản lý người thân, tiến độ ngân sách | ![Người nhận Light](docs/screenshots/tab1_people_light.png) | ![Người nhận Dark](docs/screenshots/tab1_people_dark.png) |
-| **Tab 2: Dòng thời gian**<br>Sắp xếp theo hạn chót, cảnh báo trễ hạn | ![Dòng thời gian Light](docs/screenshots/tab2_timeline_light.png) | ![Dòng thời gian Dark](docs/screenshots/tab2_timeline_dark.png) |
-| **Tab 3: Ngân sách**<br>KPIs chi tiêu & Swift Charts trực quan | ![Ngân sách Light](docs/screenshots/tab3_budget_light.png) | ![Ngân sách Dark](docs/screenshots/tab3_budget_dark.png) |
+| **Tab 1: Recipients**<br>Recipients list, budget progress bars, gift counts | ![Recipients Light](docs/screenshots/tab1_people_light.png) | ![Recipients Dark](docs/screenshots/tab1_people_dark.png) |
+| **Tab 2: Timeline**<br>Sorted deadlines, overdue alerts, status badges | ![Timeline Light](docs/screenshots/tab2_timeline_light.png) | ![Timeline Dark](docs/screenshots/tab2_timeline_dark.png) |
+| **Tab 3: Budget**<br>KPI metrics & per-person Swift Charts | ![Budget Light](docs/screenshots/tab3_budget_light.png) | ![Budget Dark](docs/screenshots/tab3_budget_dark.png) |
+| **Modal Sheets**<br>Recipient and gift forms with real-time validation | ![Add Recipient](docs/screenshots/form_add_person.png) | ![Add Gift](docs/screenshots/form_add_gift.png) |
+| **iPad Layout**<br>Adaptive layout for larger screens | <div colspan="2">![iPad Layout](docs/screenshots/tab1_people_ipad.png)</div> | |
 
 ---
 
-## ✨ 10 Chức năng cốt lõi
+## ✨ 10 Core Features (100% Parity with Reference)
 
-1. **Quản lý người nhận**: Thêm, sửa, xóa người nhận (tên, ngân sách VNĐ, ghi chú). Khi xóa người nhận, toàn bộ quà liên quan sẽ tự động bị xóa theo cơ chế **Cascade Delete** với hộp thoại xác nhận an toàn.
-2. **Quản lý quà tặng**: Mỗi món quà thuộc 1 người nhận, hỗ trợ các trường: tên quà, giá tiền, hạn cần có (DatePicker hỗ trợ nút bỏ hạn), dịp lễ (Giáng sinh, Sinh nhật, Kỷ niệm, Khác), ghi chú và link cửa hàng.
-3. **Tương tác trạng thái quà nhanh**:
-   - Chạm vào chip trạng thái để chuyển bước kế tiếp: `Ý tưởng` ➔ `Đã đặt` ➔ `Đã nhận` ➔ `Đã gói` ➔ `Ý tưởng`.
-   - Nhấn giữ (Context Menu) để chọn trực tiếp bất kỳ trạng thái nào.
-   - Vuốt thẻ quà để xóa (có xác nhận).
-4. **Dòng thời gian thông minh**:
-   - Quà được tự động sắp xếp theo ngày hết hạn tăng dần, quà không có hạn nằm ở cuối.
-   - Quà trễ hạn (hạn trước hôm nay và chưa "Đã nhận") được viền đỏ và hiển thị nhãn `Trễ hạn`.
-   - Quà "Đã nhận" hoặc "Đã gói" hiển thị nhãn xanh hoàn thành `Đã xong`.
-5. **Trung tâm ngân sách & Biểu đồ Swift Charts**:
-   - `Tổng ngân sách` = tổng ngân sách tất cả người nhận.
-   - `Dự kiến` = tổng giá tất cả các món quà.
-   - `Đã chi` = tổng giá quà từ trạng thái "Đã đặt" trở lên.
-   - `Còn lại` = Ngân sách - Dự kiến (đổi màu đỏ cảnh báo khi âm).
-   - Thanh tiến độ từng người tự động đổi sang màu đỏ cranberry khi chi phí dự kiến vượt ngân sách.
-   - Biểu đồ cột Swift Charts so sánh song song Ngân sách vs Dự kiến theo từng người nhận.
-6. **Đếm ngược Giáng sinh ở Header**: Tự động tính số ngày còn lại đến ngày 25/12 năm nay. Nếu ngày hiện tại đã qua 25/12, bộ đếm sẽ tự động chuyển sang đếm đến 25/12 năm sau.
-7. **Nhắc lịch thông báo địa phương (Local Notifications)**:
-   - Tự động lên lịch thông báo lúc **9:00 sáng trước hạn 1 ngày** cho các món quà chưa nhận.
-   - Tự động xin quyền thông báo khi mở ứng dụng lần đầu.
-   - Tự động hủy và cập nhật lại lịch khi món quà được chỉnh sửa, thay đổi trạng thái hoặc bị xóa (identifier `gift-<UUID>`).
-8. **Bảo mật và riêng tư tuyệt đối**: Toàn bộ dữ liệu chỉ lưu trữ cục bộ trên thiết bị qua SwiftData. Không gọi mạng, không tracking, không CloudKit. Khai báo bảo mật chuẩn file `PrivacyInfo.xcprivacy`.
-9. **Dữ liệu mẫu khởi tạo**: Tự động nạp dữ liệu mẫu ban đầu (sử dụng cờ trong `UserDefaults`):
-   - Mẹ: Ngân sách 2.000.000 ₫ (Khăn len cashmere 650.000 ₫ - Đã đặt hạn 15/12; Bộ trà thảo mộc 300.000 ₫ - Ý tưởng hạn 20/12).
-   - Minh (bạn thân): Ngân sách 800.000 ₫ (Sách Atomic Habits 220.000 ₫ - Đã gói hạn 10/12).
-10. **Trải nghiệm iOS chuẩn mực**: Hỗ trợ đầy đủ Dark Mode theo hệ thống, Dynamic Type, Accessibility Labels, hỗ trợ tiếng Việt mặc định (String Catalog `Localizable.xcstrings`, có sẵn tiếng Anh), định dạng tiền tệ VNĐ chuẩn `1.250.000 ₫` (`vi_VN`).
+1. **Recipient Management**: Add, edit, and delete recipients (Name, Budget in VNĐ, Notes). Deleting a person triggers an explicit confirmation dialog and executes **Cascade Delete** across all associated gifts via SwiftData `@Relationship(deleteRule: .cascade)`.
+2. **Gift Management**: Each gift belongs to a recipient, supporting title, price (VNĐ), optional due date (DatePicker with remove deadline button), occasion (Christmas, Birthday, Anniversary, Other), notes, and store URL.
+3. **Interactive Status Chips**:
+   - **Tap**: Cycles to next status: `Idea` ➔ `Ordered` ➔ `Received` ➔ `Wrapped` ➔ `Idea`.
+   - **Long Press (Context Menu)**: Directly select any status.
+   - **Swipe**: Swipe gift row to delete (with confirmation alert) or edit.
+4. **Smart Timeline**:
+   - Sorted in ascending order by deadline; gifts without deadlines appear at the bottom.
+   - Overdue gifts (`dueDate < today` and status before `Received`) display a cranberry red border and `Overdue` badge.
+   - Completed gifts (`Received` or `Wrapped`) display a pine green `Completed` badge.
+5. **Budget Overview & Swift Charts**:
+   - `Total Budget` = sum of all recipients' budgets.
+   - `Planned` = sum of all gift prices.
+   - `Spent` = sum of gifts ordered or completed (`Ordered`, `Received`, `Wrapped`).
+   - `Remaining` = Total Budget - Planned (turns cranberry red when negative).
+   - Individual progress bars turn red when exceeding individual budget.
+   - Swift Charts grouped bar visualization comparing Budget vs Planned per recipient.
+6. **Christmas Countdown Header**: Computes days remaining until December 25th. If today is past Christmas, automatically rolls over to December 25th of next year.
+7. **Local Notifications (`UserNotifications`)**:
+   - Automatically schedules a local alert at **9:00 AM on the day prior to deadline** for pending gifts.
+   - Requests user authorization on first launch.
+   - Automatically cancels and updates triggers when gifts are modified, completed, or removed (notification identifier: `gift-<UUID>`).
+8. **Privacy-First (Zero Network Calls)**: 100% local-only persistence via SwiftData. No analytics, no ad tracking, no iCloud / CloudKit syncing. Fully declared in `PrivacyInfo.xcprivacy`.
+9. **Onboarding Seed Data**: Populates initial sample data on first launch via a `UserDefaults` flag:
+   - **Mom**: Budget 2,000,000 ₫ (Cashmere scarf: 650,000 ₫ - Ordered, due Dec 15; Herbal tea set: 300,000 ₫ - Idea, due Dec 20).
+   - **Minh (best friend)**: Budget 800,000 ₫ (Atomic Habits book: 220,000 ₫ - Wrapped, due Dec 10).
+10. **iOS Native Polish**: Dynamic Type support, English accessibility labels, System Dark Mode adaptation, VNĐ currency formatting (`1.250.000 ₫`), and adaptive iPad layout.
 
 ---
 
-## 🏗️ Kiến trúc & Cấu trúc thư mục
+## 🏗️ Architecture & Project Structure
 
-Ứng dụng được thiết kế theo kiến trúc **MVVM** hiện đại của SwiftUI với `@Observable` và `@Model` của SwiftData:
+The project follows modern SwiftUI **MVVM** pattern with Swift 5.9+ `@Observable` macro and SwiftData models:
 
 ```text
 SantaList/
 ├── App/
-│   ├── SantaListApp.swift          # Entry point, ModelContainer & xin quyền Notification
-│   └── SeedData.swift               # Nạp 2 người & 3 quà mẫu khi mở lần đầu
+│   ├── SantaListApp.swift          # App entry, ModelContainer setup & notification authorization
+│   └── SeedData.swift               # Default seed loader (Mom & Minh sample data)
 ├── Models/
-│   ├── Person.swift                 # SwiftData Model người nhận (@Relationship cascade delete)
-│   ├── Gift.swift                   # SwiftData Model quà tặng
-│   ├── GiftStatus.swift             # Enum trạng thái quà & hàm next() xoay vòng
-│   └── Occasion.swift               # Enum dịp lễ (Giáng sinh, Sinh nhật...)
+│   ├── Person.swift                 # SwiftData Model for recipient (@Relationship cascade delete)
+│   ├── Gift.swift                   # SwiftData Model for gift items
+│   ├── GiftStatus.swift             # Status enum (Idea, Ordered, Received, Wrapped) & cyclic .next()
+│   └── Occasion.swift               # Occasions enum (Christmas, Birthday, Anniversary, Other)
 ├── Logic/
-│   ├── BudgetCalculator.swift       # Tính toán ngân sách, dự kiến, đã chi, còn lại
-│   ├── Formatters.swift             # Định dạng tiền tệ VNĐ ("1.250.000 ₫") & ngày tháng
-│   └── Countdown.swift              # Logic đếm ngược đến 25/12 (rollover năm sau)
+│   ├── BudgetCalculator.swift       # Budget, planned, spent, and remaining calculations
+│   ├── Formatters.swift             # VNĐ currency ("1.250.000 ₫") and date formatters
+│   ├── Countdown.swift              # Christmas countdown logic with next-year rollover
+│   └── OverdueChecker.swift         # Overdue gift identification rules
 ├── Services/
-│   └── ReminderService.swift        # Quản lý UserNotifications lúc 9:00 sáng trước hạn 1 ngày
+│   └── ReminderService.swift        # UNUserNotificationCenter manager (9:00 AM 1 day prior)
 ├── Views/
-│   ├── ContentView.swift            # TabView 3 tab
+│   ├── ContentView.swift            # 3-Tab TabView coordinator
 │   ├── Components/
-│   │   ├── AppHeaderView.swift      # Header đếm ngược Giáng sinh & slogan
-│   │   ├── StatusChipView.swift     # Chip trạng thái (tap next, context menu)
-│   │   ├── BudgetProgressBar.swift  # Thanh tiến độ đổi màu khi vượt ngân sách
-│   │   └── AddEditGiftSheet.swift   # Form thêm/sửa quà có validate
+│   │   ├── AppHeaderView.swift      # Brand header with countdown badge
+│   │   ├── StatusChipView.swift     # Interactive status chip (tap next, context menu)
+│   │   ├── BudgetProgressBar.swift  # Dynamic progress bar with over-budget warning
+│   │   ├── GiftRowView.swift        # Universal gift row with swipe actions
+│   │   ├── EmptyStateView.swift     # ContentUnavailableView for empty tabs
+│   │   ├── AddEditPersonSheet.swift # Recipient form with inline validation
+│   │   └── AddEditGiftSheet.swift   # Gift form with DatePicker & inline validation
 │   ├── People/
-│   │   ├── PeopleView.swift         # Tab 1: Danh sách người nhận & nút thêm quà nổi
-│   │   ├── PersonDetailView.swift   # Chi tiết người nhận, danh sách quà & ngân sách
-│   │   └── AddEditPersonSheet.swift # Form thêm/sửa người có validate
+│   │   ├── PeopleView.swift         # Tab 1: Recipients list & floating action button
+│   │   └── PersonDetailView.swift   # Recipient detail view with gift management
 │   ├── Timeline/
-│   │   └── TimelineView.swift       # Tab 2: Quà theo hạn chót, cảnh báo trễ hạn
+│   │   └── TimelineView.swift       # Tab 2: Sorted schedule with filter segments & overdue badges
 │   └── Budget/
-│       └── BudgetView.swift         # Tab 3: KPI cards & biểu đồ Swift Charts
+│       ├── BudgetView.swift         # Tab 3: KPI cards & per-person breakdown
+│       └── BudgetChartView.swift    # Swift Charts grouped bar comparison
 └── Resources/
-    ├── Assets.xcassets/             # Bảng màu (Pine Green, Cranberry Red, Dark variants)
-    ├── Localizable.xcstrings        # Chuẩn String Catalog tiếng Việt & tiếng Anh
-    ├── PrivacyInfo.xcprivacy        # Khai báo bảo mật không thu thập dữ liệu
-    └── Info.plist                   # Cấu hình Bundle & quyền iOS
+    ├── Assets.xcassets/             # Color tokens (PineGreen, CranberryRed, WarmGold, Dark variants)
+    ├── Localizable.xcstrings        # String Catalog (English source "en")
+    ├── PrivacyInfo.xcprivacy        # Apple privacy manifest
+    └── Info.plist                   # App configuration & notification descriptions
+
 SantaListTests/
-├── BudgetCalculatorTests.swift      # Test tính ngân sách, dự kiến, đã chi, còn lại
-├── GiftStatusTests.swift            # Test hàm next() xoay vòng, nhãn tiếng Việt
-├── OverdueLogicTests.swift          # Test logic phát hiện trễ hạn
-├── CountdownTests.swift             # Test đếm ngược 25/12 & rollover qua năm mới
-├── FormattersTests.swift            # Test định dạng VNĐ & ngày tháng
-└── SwiftDataCascadeTests.swift      # Test xóa cascade bằng in-memory ModelContainer
+├── BudgetCalculatorTests.swift      # Verifies budget, planned, spent, and remaining calculations
+├── GiftStatusTests.swift            # Verifies cyclic .next() progression
+├── OverdueLogicTests.swift          # Verifies overdue detection edge cases
+├── CountdownTests.swift             # Verifies Christmas countdown & next-year rollover
+├── FormatterTests.swift             # Verifies dot-separated VNĐ currency and date formats
+└── CascadeDeleteTests.swift         # In-memory ModelContainer test for cascade delete
+
+SantaListUITests/
+└── SantaListUITests.swift           # Automated XCUITest: 3-tab navigation, adding, status chip tap, swipe delete
 ```
 
 ---
 
-## 🚀 Hướng dẫn mở và chạy trên Xcode
+## 🚀 How to Run on iOS Simulator
 
-### Yêu cầu hệ thống
-- macOS Sonoma 14.0+ hoặc mới hơn
-- Xcode 15.0+ (khuyên dùng Xcode 15.4 hoặc 16.0+)
+### System Requirements
+- macOS 14.0+ (Sonoma or Sequoia)
+- Xcode 15.0+ (Xcode 15.4 or Xcode 16 recommended)
 - iOS Deployment Target: **iOS 17.0+**
 
-### Các bước chạy trên iOS Simulator:
-1. Mở thư mục dự án và nhấp đúp vào file `SantaList.xcodeproj` để mở trong Xcode.
-2. Trên thanh công cụ trên cùng (Toolbar), chọn Scheme **SantaList** và thiết bị đích là **iPhone 15** (hoặc bất kỳ thiết bị iOS Simulator 17.0+ nào).
-3. Nhấn **`Cmd + R`** (hoặc nút Run hình tam giác) để biên dịch và khởi chạy ứng dụng.
-4. Mở tab *People*, *Timeline*, *Budget* để trải nghiệm đầy đủ tính năng.
+### Method 1: Using Xcode
+1. Open the repository root in Finder.
+2. Double-click `SantaList.xcodeproj` to launch Xcode.
+3. Select the **SantaList** scheme and choose **iPhone 15** (or any iOS 17.0+ simulator) in the top toolbar.
+4. Press **`Cmd + R`** (or click the Run button) to compile and launch.
+5. Explore the *Recipients*, *Timeline*, and *Budget* tabs.
 
-### Chạy bằng dòng lệnh (Terminal):
+### Method 2: Command Line (`xcodebuild`)
 ```bash
-# Build ứng dụng cho iOS Simulator:
+# Build the application for iOS Simulator:
 xcodebuild -project SantaList.xcodeproj \
            -scheme SantaList \
            -destination 'platform=iOS Simulator,name=iPhone 15' \
            build
 
-# Hoặc dùng script tiện ích tự động boot simulator và mở app:
-./scripts/build_simulator.sh "iPhone 15"
+# Boot simulator and launch app:
+xcrun simctl boot "iPhone 15"
+xcrun simctl install booted <path-to-built-app>/SantaList.app
+xcrun simctl launch booted com.santalist.app
 ```
 
 ---
 
-## 🧪 Chạy Unit Test
+## 🧪 How to Run Tests
 
-Bộ test bao gồm toàn bộ các yêu cầu nghiệp vụ: tính ngân sách, xoay vòng trạng thái `next()`, phát hiện trễ hạn, đếm ngược Giáng sinh, định dạng VNĐ, và kiểm tra xóa cascade trong SwiftData in-memory:
+The test suite covers all business logic, data models, and automated UI workflows:
 
-### Chạy trên Xcode:
-- Nhấn tổ hợp phím **`Cmd + U`** trong Xcode.
+### In Xcode:
+- Press **`Cmd + U`** to run all Unit Tests (`SantaListTests`) and UI Tests (`SantaListUITests`).
 
-### Chạy qua Terminal:
+### Via Command Line:
 ```bash
 xcodebuild test \
     -project SantaList.xcodeproj \
     -scheme SantaList \
     -destination 'platform=iOS Simulator,name=iPhone 15' \
     CODE_SIGNING_ALLOWED=NO
-
-# Hoặc dùng script chạy test:
-./scripts/test_simulator.sh "iPhone 15"
 ```
 
 ---
 
-## 📲 Hướng dẫn đổi Team & Bundle ID để chạy trên máy thật
+## 📲 Changing Team & Bundle Identifier
 
-1. Mở `SantaList.xcodeproj` bằng Xcode.
-2. Trong thanh điều hướng bên trái (Project Navigator), chọn root project **SantaList**.
-3. Chọn target **SantaList** ➔ tab **Signing & Capabilities**.
-4. Tại mục **Signing**:
-   - Tích chọn **Automatically manage signing**.
-   - Tại mục **Team**: Chọn Apple Developer Account cá nhân của bạn.
-   - Tại mục **Bundle Identifier**: Đổi từ `com.santalist.app` sang Bundle ID duy nhất của bạn (ví dụ: `com.yourname.santalist`).
-5. Kết nối iPhone/iPad thật qua cáp hoặc Wi-Fi, chọn thiết bị thật trên thanh Toolbar và nhấn **`Cmd + R`**.
+To run on a physical iPhone or iPad:
+
+1. Open `SantaList.xcodeproj` in Xcode.
+2. In the Project Navigator, select the root project **SantaList**.
+3. Select the **SantaList** target ➔ go to the **Signing & Capabilities** tab.
+4. Under **Signing**:
+   - Check **Automatically manage signing**.
+   - Select your personal Apple Developer Team under **Team**.
+   - Change **Bundle Identifier** from `com.santalist.app` to your unique identifier (e.g. `com.yourname.santalist`).
+5. Connect your device via cable or Wi-Fi, select it in the run destinations list, and press **`Cmd + R`**.
 
 ---
 
-## 🔒 Riêng tư & Bảo mật
-- Không sử dụng bất kỳ kết nối mạng nào (`URLSession` không được gọi ở bất cứ đâu).
-- Không nhúng SDK phân tích, theo dõi hoặc quảng cáo.
-- Không kích hoạt iCloud / CloudKit (dữ liệu chỉ lưu trên máy).
-- Đã cấu hình tệp `PrivacyInfo.xcprivacy` chuẩn Apple.
+## 🔒 Privacy & Offline Verification
+
+- Zero network calls: Search the codebase for `URLSession`, `Network`, or `URLRequest` — none are used.
+- Zero analytics, trackers, or telemetry SDKs.
+- Zero CloudKit or remote syncing.
+- Apple Privacy Manifest (`PrivacyInfo.xcprivacy`) configured declaring zero tracking and default UserDefaults domain usage.
