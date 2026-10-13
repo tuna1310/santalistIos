@@ -1,55 +1,65 @@
 import Foundation
 
-/// Bộ định dạng tiền tệ và ngày tháng chuẩn theo yêu cầu ứng dụng
+/// Formatting utility for currency and dates
 public struct Formatters {
-    /// Formatter tiền tệ VNĐ chuẩn định dạng "1.250.000 ₫"
-    public static let currency: NumberFormatter = {
+    private static let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "vi_VN")
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = "₫"
-        formatter.maximumFractionDigits = 0
+        formatter.numberStyle = .decimal
         formatter.groupingSeparator = "."
         formatter.decimalSeparator = ","
-        formatter.positiveFormat = "#,##0 ¤"
-        formatter.negativeFormat = "-#,##0 ¤"
+        formatter.maximumFractionDigits = 0
         return formatter
     }()
 
-    /// Chuyển đổi số nguyên sang chuỗi tiền tệ VNĐ (ví dụ: "1.250.000 ₫")
-    public static func formatVND(_ amount: Int) -> String {
-        if let formatted = currency.string(from: NSNumber(value: amount)) {
-            return formatted
-        }
-        return "\(amount) ₫"
-    }
-
-    /// Định dạng ngày ngắn gọn (dd/MM/yyyy)
-    public static let dateShort: DateFormatter = {
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "vi_VN")
+        formatter.locale = Locale(identifier: "en_US")
         formatter.dateFormat = "dd/MM/yyyy"
         return formatter
     }()
 
-    /// Định dạng ngày và tháng (dd/MM)
-    public static let dateDayMonth: DateFormatter = {
+    private static let shortDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "vi_VN")
-        formatter.dateFormat = "dd/MM"
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.dateFormat = "dd MMM"
         return formatter
     }()
 
-    /// Chuỗi hiển thị thân thiện cho hạn chót
-    public static func dueDateString(for date: Date?, calendar: Calendar = .current) -> String {
-        guard let date = date else { return "Không có hạn" }
-        if calendar.isDateInToday(date) {
-            return "Hôm nay"
-        } else if calendar.isDateInTomorrow(date) {
-            return "Ngày mai"
-        } else if calendar.isDateInYesterday(date) {
-            return "Hôm qua"
+    /// Currency format with dot grouping: "1.250.000 ₫", "0 ₫", "-100.000 ₫"
+    public static func formatVND(_ amount: Int) -> String {
+        let formattedNumber = currencyFormatter.string(from: NSNumber(value: amount)) ?? "\(amount)"
+        return "\(formattedNumber) ₫"
+    }
+
+    /// Full date: "15/12/2026"
+    public static func formatDate(_ date: Date) -> String {
+        dateFormatter.string(from: date)
+    }
+
+    /// Short date: "15 Dec"
+    public static func formatShortDate(_ date: Date) -> String {
+        shortDateFormatter.string(from: date)
+    }
+
+    /// Contextual relative date: "Today", "Tomorrow", "Yesterday", or formatted date
+    public static func formatRelativeDate(_ date: Date, referenceDate: Date = Date()) -> String {
+        let calendar = Calendar.current
+        let startOfRef = calendar.startOfDay(for: referenceDate)
+        let startOfTarget = calendar.startOfDay(for: date)
+
+        guard let days = calendar.dateComponents([.day], from: startOfRef, to: startOfTarget).day else {
+            return formatDate(date)
         }
-        return dateShort.string(from: date)
+
+        switch days {
+        case 0:
+            return "Today"
+        case 1:
+            return "Tomorrow"
+        case -1:
+            return "Yesterday"
+        default:
+            return formatShortDate(date)
+        }
     }
 }

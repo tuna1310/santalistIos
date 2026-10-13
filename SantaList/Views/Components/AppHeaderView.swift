@@ -1,11 +1,13 @@
 import SwiftUI
 
-/// Header thương hiệu cho ứng dụng SantaList kèm đếm ngược Giáng sinh
-struct AppHeaderView: View {
+/// Brand header with Santa emoji, slogan, and Christmas countdown badge
+public struct AppHeaderView: View {
     @State private var currentDate = Date()
     private let timer = Timer.publish(every: 3600, on: .main, in: .common).autoconnect()
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         VStack(spacing: 8) {
             HStack(alignment: .center) {
                 VStack(alignment: .leading, spacing: 3) {
@@ -17,7 +19,7 @@ struct AppHeaderView: View {
                             .foregroundStyle(Color("PineGreen"))
                     }
 
-                    Text("Quà đúng người, đúng hạn, đúng ngân sách")
+                    Text("Gifts for the right people, on time, on budget")
                         .font(.caption)
                         .foregroundStyle(Color("TextSecondary"))
                         .lineLimit(1)
@@ -25,7 +27,7 @@ struct AppHeaderView: View {
 
                 Spacer()
 
-                // Badge đếm ngược ngày đến Giáng sinh
+                // Countdown badge capsule
                 HStack(spacing: 6) {
                     Image(systemName: "sparkles")
                         .font(.caption2.weight(.bold))
@@ -59,3 +61,5 @@ struct AppHeaderView: View {
         }
     }
 }
+
+public typealias HeaderView = AppHeaderView

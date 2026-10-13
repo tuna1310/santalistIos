@@ -1,8 +1,8 @@
 import SwiftUI
 import SwiftData
 
-/// Màn hình danh sách người nhận quà (Tab 1)
-struct PeopleView: View {
+/// Tab 1: Recipients list with summary cards and floating add-gift button
+public struct PeopleView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Person.name) private var people: [Person]
 
@@ -11,32 +11,39 @@ struct PeopleView: View {
     @State private var personToEdit: Person? = nil
     @State private var personToDelete: Person? = nil
     @State private var showingDeleteAlert = false
+    @State private var searchText = ""
 
-    var body: some View {
+    public init() {}
+
+    private var filteredPeople: [Person] {
+        if searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return people
+        }
+        return people.filter {
+            $0.name.localizedCaseInsensitiveContains(searchText) ||
+            $0.note.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+
+    public var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 AppHeaderView()
 
                 if people.isEmpty {
-                    ContentUnavailableView {
-                        Label("Chưa có người nhận nào", systemImage: "person.crop.circle.badge.plus")
-                    } description: {
-                        Text("Hãy thêm những người thân yêu bạn muốn tặng quà dịp này để bắt đầu lên kế hoạch và quản lý ngân sách.")
-                    } actions: {
-                        Button {
-                            showingAddPersonSheet = true
-                        } label: {
-                            Text("Thêm người nhận đầu tiên")
-                                .fontWeight(.semibold)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .tint(Color("PineGreen"))
+                    EmptyStateView(
+                        title: "No Recipients Yet",
+                        systemImage: "person.crop.circle.badge.plus",
+                        description: "Add your family and friends to start tracking gift ideas.",
+                        actionTitle: "Add First Recipient"
+                    ) {
+                        showingAddPersonSheet = true
                     }
                     .frame(maxHeight: .infinity)
                 } else {
                     ScrollView {
                         LazyVStack(spacing: 16) {
-                            ForEach(people) { person in
+                            ForEach(filteredPeople) { person in
                                 NavigationLink {
                                     PersonDetailView(person: person)
                                 } label: {
@@ -55,8 +62,9 @@ struct PeopleView: View {
                             }
                         }
                         .padding()
-                        .padding(.bottom, 60) // chừa khoảng trống cho floating button
+                        .padding(.bottom, 60)
                     }
+                    .searchable(text: $searchText, prompt: "Search recipients...")
                 }
             }
             .background(Color("AppBackground"))
@@ -66,24 +74,23 @@ struct PeopleView: View {
                     Button {
                         showingAddPersonSheet = true
                     } label: {
-                        Label("Thêm người", systemImage: "person.badge.plus")
+                        Label("Add Person", systemImage: "person.badge.plus")
                             .foregroundStyle(Color("PineGreen"))
                     }
-                    .accessibilityLabel("Thêm người nhận")
+                    .accessibilityLabel("Add recipient")
                 }
 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showingAddGiftSheet = true
                     } label: {
-                        Label("Thêm quà", systemImage: "gift.fill")
+                        Label("Add Gift", systemImage: "gift.fill")
                             .foregroundStyle(Color("PineGreen"))
                     }
-                    .accessibilityLabel("Thêm món quà")
+                    .accessibilityLabel("Add gift")
                 }
             }
             .overlay(alignment: .bottomTrailing) {
-                // Floating Action Button "Thêm quà"
                 if !people.isEmpty {
                     Button {
                         showingAddGiftSheet = true
@@ -91,7 +98,7 @@ struct PeopleView: View {
                         HStack(spacing: 8) {
                             Image(systemName: "plus")
                                 .font(.body.weight(.bold))
-                            Text("Thêm quà")
+                            Text("Add Gift")
                                 .font(.subheadline.weight(.bold))
                         }
                         .foregroundStyle(.white)
@@ -103,7 +110,7 @@ struct PeopleView: View {
                     }
                     .padding(.trailing, 20)
                     .padding(.bottom, 16)
-                    .accessibilityLabel("Nút nổi thêm quà mới")
+                    .accessibilityLabel("Floating button to add new gift")
                 }
             }
             .sheet(isPresented: $showingAddPersonSheet) {
@@ -116,17 +123,17 @@ struct PeopleView: View {
                 AddEditGiftSheet()
             }
             .confirmationDialog(
-                "Xác nhận xóa người nhận",
+                "Delete Recipient",
                 isPresented: $showingDeleteAlert,
                 titleVisibility: .visible,
                 presenting: personToDelete
             ) { person in
-                Button("Xóa người nhận & toàn bộ quà", role: .destructive) {
+                Button("Delete recipient & all gifts", role: .destructive) {
                     deletePerson(person)
                 }
-                Button("Hủy", role: .cancel) {}
+                Button("Cancel", role: .cancel) {}
             } message: { person in
-                Text("Xóa \"\(person.name)\" sẽ xóa toàn bộ các món quà thuộc về người này. Hành động không thể hoàn tác.")
+                Text("Deleting \"\(person.name)\" will permanently remove all gifts for this person. This action cannot be undone.")
             }
         }
     }
@@ -140,7 +147,7 @@ struct PeopleView: View {
     }
 }
 
-/// Thẻ hiển thị tóm tắt một người nhận trong danh sách
+/// Person summary card view
 struct PersonCard: View {
     let person: Person
     let onEdit: () -> Void
@@ -168,13 +175,13 @@ struct PersonCard: View {
                     Button {
                         onEdit()
                     } label: {
-                        Label("Sửa thông tin", systemImage: "pencil")
+                        Label("Edit Recipient", systemImage: "pencil")
                     }
 
                     Button(role: .destructive) {
                         onDelete()
                     } label: {
-                        Label("Xóa người nhận", systemImage: "trash")
+                        Label("Delete Recipient", systemImage: "trash")
                     }
                 } label: {
                     Image(systemName: "ellipsis")
@@ -184,13 +191,12 @@ struct PersonCard: View {
                 }
             }
 
-            // Tóm tắt quà và số tiền
             HStack {
                 HStack(spacing: 6) {
                     Image(systemName: "gift")
                         .font(.caption)
                         .foregroundStyle(Color("PineGreen"))
-                    Text("\(person.gifts.count) món quà")
+                    Text("\(person.gifts.count) \(person.gifts.count == 1 ? "gift" : "gifts")")
                         .font(.caption)
                         .foregroundStyle(Color("TextSecondary"))
                 }
@@ -198,7 +204,7 @@ struct PersonCard: View {
                 Spacer()
 
                 HStack(spacing: 4) {
-                    Text("Dự kiến:")
+                    Text("Planned:")
                         .font(.caption2)
                         .foregroundStyle(Color("TextSecondary"))
                     Text(Formatters.formatVND(person.plannedAmount))
@@ -210,7 +216,6 @@ struct PersonCard: View {
                 }
             }
 
-            // Thanh tiến độ
             BudgetProgressBar(
                 planned: person.plannedAmount,
                 budget: person.budget
@@ -222,3 +227,5 @@ struct PersonCard: View {
         .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 2)
     }
 }
+
+public typealias PeopleListView = PeopleView

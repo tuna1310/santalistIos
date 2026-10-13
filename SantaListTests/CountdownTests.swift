@@ -2,46 +2,59 @@ import XCTest
 @testable import SantaList
 
 final class CountdownTests: XCTestCase {
+    private var calendar: Calendar {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(secondsFromGMT: 0)!
+        return cal
+    }
 
-    func testChristmasCountdownDays() {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+    func testBeforeChristmasThisYear() {
+        let refDate = calendar.date(from: DateComponents(year: 2026, month: 12, day: 20, hour: 10, minute: 0))!
+        let target = ChristmasCountdown.nextChristmas(from: refDate, calendar: calendar)
 
-        // Trường hợp 1: Ngày 24/12 -> Còn 1 ngày
-        var comp24 = DateComponents()
-        comp24.year = 2026
-        comp24.month = 12
-        comp24.day = 24
-        let dateDec24 = calendar.date(from: comp24)!
-        XCTAssertEqual(ChristmasCountdown.daysRemaining(from: dateDec24, calendar: calendar), 1)
-        XCTAssertEqual(ChristmasCountdown.countdownText(from: dateDec24, calendar: calendar), "Còn 1 ngày đến Giáng sinh 🎄")
+        let targetYear = calendar.component(.year, from: target)
+        let targetMonth = calendar.component(.month, from: target)
+        let targetDay = calendar.component(.day, from: target)
 
-        // Trường hợp 2: Đúng ngày 25/12 -> 0 ngày
-        var comp25 = DateComponents()
-        comp25.year = 2026
-        comp25.month = 12
-        comp25.day = 25
-        let dateDec25 = calendar.date(from: comp25)!
-        XCTAssertEqual(ChristmasCountdown.daysRemaining(from: dateDec25, calendar: calendar), 0)
-        XCTAssertEqual(ChristmasCountdown.countdownText(from: dateDec25, calendar: calendar), "Hôm nay là Giáng sinh! 🎅")
+        XCTAssertEqual(targetYear, 2026)
+        XCTAssertEqual(targetMonth, 12)
+        XCTAssertEqual(targetDay, 25)
 
-        // Trường hợp 3: Ngày 26/12 -> Đã qua -> Đếm đến 25/12 năm sau (2027)
-        var comp26 = DateComponents()
-        comp26.year = 2026
-        comp26.month = 12
-        comp26.day = 26
-        let dateDec26 = calendar.date(from: comp26)!
-        let remainingFrom26 = ChristmasCountdown.daysRemaining(from: dateDec26, calendar: calendar)
-        // 2027 không phải năm nhuận -> 364 ngày từ 26/12/2026 đến 25/12/2027
-        XCTAssertEqual(remainingFrom26, 364)
+        let days = ChristmasCountdown.daysRemaining(from: refDate, calendar: calendar)
+        XCTAssertEqual(days, 5)
 
-        // Trường hợp 4: Ngày 20/12 -> Còn 5 ngày
-        var comp20 = DateComponents()
-        comp20.year = 2026
-        comp20.month = 12
-        comp20.day = 20
-        let dateDec20 = calendar.date(from: comp20)!
-        XCTAssertEqual(ChristmasCountdown.daysRemaining(from: dateDec20, calendar: calendar), 5)
-        XCTAssertEqual(ChristmasCountdown.countdownText(from: dateDec20, calendar: calendar), "Còn 5 ngày đến Giáng sinh 🎄")
+        let display = ChristmasCountdown.countdownText(from: refDate, calendar: calendar)
+        XCTAssertEqual(display, "5 days until Christmas 🎄")
+    }
+
+    func testOnChristmasDay() {
+        let refDate = calendar.date(from: DateComponents(year: 2026, month: 12, day: 25, hour: 8, minute: 30))!
+        let days = ChristmasCountdown.daysRemaining(from: refDate, calendar: calendar)
+        XCTAssertEqual(days, 0)
+
+        let display = ChristmasCountdown.countdownText(from: refDate, calendar: calendar)
+        XCTAssertEqual(display, "Today is Christmas! 🎄")
+    }
+
+    func testAfterChristmasRollsOverToNextYear() {
+        let refDate = calendar.date(from: DateComponents(year: 2026, month: 12, day: 26, hour: 12, minute: 0))!
+        let target = ChristmasCountdown.nextChristmas(from: refDate, calendar: calendar)
+
+        let targetYear = calendar.component(.year, from: target)
+        let targetMonth = calendar.component(.month, from: target)
+        let targetDay = calendar.component(.day, from: target)
+
+        XCTAssertEqual(targetYear, 2027)
+        XCTAssertEqual(targetMonth, 12)
+        XCTAssertEqual(targetDay, 25)
+
+        let days = ChristmasCountdown.daysRemaining(from: refDate, calendar: calendar)
+        XCTAssertEqual(days, 364)
+    }
+
+    func testOneDayBeforeChristmasDisplay() {
+        let refDate = calendar.date(from: DateComponents(year: 2026, month: 12, day: 24, hour: 14, minute: 0))!
+        let display = ChristmasCountdown.countdownText(from: refDate, calendar: calendar)
+        XCTAssertEqual(display, "1 day until Christmas 🎅")
     }
 }

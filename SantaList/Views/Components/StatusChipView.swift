@@ -1,14 +1,20 @@
 import SwiftUI
 
-/// Chip hiển thị trạng thái quà tặng:
-/// - Chạm nhẹ để chuyển sang trạng thái kế tiếp (next)
-/// - Nhấn giữ (contextMenu) để chọn trực tiếp trạng thái bất kỳ
-struct StatusChipView: View {
-    let status: GiftStatus
-    var onNext: (() -> Void)? = nil
-    var onSelect: ((GiftStatus) -> Void)? = nil
+/// Status chip view for gift items:
+/// - Single tap: Advances to next status
+/// - Long press (contextMenu): Directly pick any status
+public struct StatusChipView: View {
+    public let status: GiftStatus
+    public var onNext: (() -> Void)? = nil
+    public var onSelect: ((GiftStatus) -> Void)? = nil
 
-    var body: some View {
+    public init(status: GiftStatus, onNext: (() -> Void)? = nil, onSelect: ((GiftStatus) -> Void)? = nil) {
+        self.status = status
+        self.onNext = onNext
+        self.onSelect = onSelect
+    }
+
+    public var body: some View {
         Button {
             onNext?()
         } label: {
@@ -29,7 +35,7 @@ struct StatusChipView: View {
             )
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Trạng thái: \(status.title). Chạm để đổi bước kế tiếp.")
+        .accessibilityLabel("Status: \(status.title). Tap to advance.")
         .contextMenu {
             ForEach(GiftStatus.allCases) { item in
                 Button {
@@ -47,9 +53,7 @@ struct StatusChipView: View {
             return Color("WarmGold")
         case .ordered:
             return Color.orange
-        case .received:
-            return Color("PineGreen")
-        case .wrapped:
+        case .received, .wrapped:
             return Color("PineGreen")
         }
     }
@@ -60,10 +64,26 @@ struct StatusChipView: View {
             return Color("WarmGold")
         case .ordered:
             return Color.orange
-        case .received:
-            return Color("PineGreen")
-        case .wrapped:
+        case .received, .wrapped:
             return Color("PineGreen")
         }
+    }
+}
+
+public struct StatusBadgeView: View {
+    public let status: GiftStatus
+    public let onStatusChange: (GiftStatus) -> Void
+
+    public init(status: GiftStatus, onStatusChange: @escaping (GiftStatus) -> Void) {
+        self.status = status
+        self.onStatusChange = onStatusChange
+    }
+
+    public var body: some View {
+        StatusChipView(
+            status: status,
+            onNext: { onStatusChange(status.next()) },
+            onSelect: { onStatusChange($0) }
+        )
     }
 }

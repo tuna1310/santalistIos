@@ -1,16 +1,9 @@
 {
-  "sourceLanguage": "vi",
-  "version": "1.0",
+  "sourceLanguage": "en",
   "strings": {
     "SantaList": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "SantaList"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -19,15 +12,9 @@
         }
       }
     },
-    "Quà đúng người, đúng hạn, đúng ngân sách": {
+    "Gifts for the right people, on time, on budget": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quà đúng người, đúng hạn, đúng ngân sách"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -36,15 +23,9 @@
         }
       }
     },
-    "Người nhận": {
+    "Recipients": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Người nhận"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -53,15 +34,9 @@
         }
       }
     },
-    "Dòng thời gian": {
+    "Timeline": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dòng thời gian"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -70,15 +45,9 @@
         }
       }
     },
-    "Ngân sách": {
+    "Budget": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ngân sách"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -87,15 +56,53 @@
         }
       }
     },
-    "Ý tưởng": {
+    "Add Gift": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
+        "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ý tưởng"
+            "value": "Add Gift"
           }
-        },
+        }
+      }
+    },
+    "Add Person": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Person"
+          }
+        }
+      }
+    },
+    "Edit Recipient": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Recipient"
+          }
+        }
+      }
+    },
+    "Edit Gift": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit Gift"
+          }
+        }
+      }
+    },
+    "Idea": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -104,15 +111,9 @@
         }
       }
     },
-    "Đã đặt": {
+    "Ordered": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Đã đặt"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -121,15 +122,9 @@
         }
       }
     },
-    "Đã nhận": {
+    "Received": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Đã nhận"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -138,15 +133,9 @@
         }
       }
     },
-    "Đã gói": {
+    "Wrapped": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Đã gói"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -155,83 +144,9 @@
         }
       }
     },
-    "Giáng sinh": {
+    "Overdue": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Giáng sinh"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Christmas"
-          }
-        }
-      }
-    },
-    "Sinh nhật": {
-      "extractionState": "manual",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sinh nhật"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Birthday"
-          }
-        }
-      }
-    },
-    "Kỷ niệm": {
-      "extractionState": "manual",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kỷ niệm"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anniversary"
-          }
-        }
-      }
-    },
-    "Khác": {
-      "extractionState": "manual",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Khác"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
-          }
-        }
-      }
-    },
-    "Trễ hạn": {
-      "extractionState": "manual",
-      "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trễ hạn"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -240,15 +155,64 @@
         }
       }
     },
-    "Tổng ngân sách": {
+    "Completed": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
+        "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tổng ngân sách"
+            "value": "Completed"
           }
-        },
+        }
+      }
+    },
+    "Christmas": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Christmas"
+          }
+        }
+      }
+    },
+    "Birthday": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birthday"
+          }
+        }
+      }
+    },
+    "Anniversary": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anniversary"
+          }
+        }
+      }
+    },
+    "Other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        }
+      }
+    },
+    "Total Budget": {
+      "extractionState": "manual",
+      "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -257,15 +221,9 @@
         }
       }
     },
-    "Dự kiến": {
+    "Planned": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dự kiến"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -274,15 +232,9 @@
         }
       }
     },
-    "Đã chi": {
+    "Spent": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Đã chi"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -291,15 +243,9 @@
         }
       }
     },
-    "Còn lại": {
+    "Remaining": {
       "extractionState": "manual",
       "localizations": {
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Còn lại"
-          }
-        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -308,5 +254,6 @@
         }
       }
     }
-  }
+  },
+  "version": "1.0"
 }

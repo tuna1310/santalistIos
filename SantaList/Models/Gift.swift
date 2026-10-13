@@ -1,18 +1,19 @@
 import Foundation
 import SwiftData
 
+/// Gift item model
 @Model
-public final class Gift {
+public final class Gift: Identifiable {
     public var id: UUID = UUID()
     public var title: String = ""
     public var price: Int = 0
-    public var statusRawValue: Int = 0
-    public var dueDate: Date? = nil
-    public var occasionRawValue: String = Occasion.christmas.rawValue
+    public var statusRaw: String = GiftStatus.idea.rawValue
+    public var dueDate: Date?
+    public var occasionRaw: String = Occasion.christmas.rawValue
     public var note: String = ""
-    public var url: String = ""
+    public var url: String?
 
-    public var person: Person? = nil
+    public var person: Person?
 
     public init(
         id: UUID = UUID(),
@@ -22,52 +23,51 @@ public final class Gift {
         dueDate: Date? = nil,
         occasion: Occasion = .christmas,
         note: String = "",
-        url: String = "",
+        url: String? = nil,
         person: Person? = nil
     ) {
         self.id = id
         self.title = title
-        self.price = price
-        self.statusRawValue = status.rawValue
+        self.price = max(0, price)
+        self.statusRaw = status.rawValue
         self.dueDate = dueDate
-        self.occasionRawValue = occasion.rawValue
+        self.occasionRaw = occasion.rawValue
         self.note = note
         self.url = url
         self.person = person
     }
 
-    /// Trạng thái quà
     public var status: GiftStatus {
         get {
-            GiftStatus(rawValue: statusRawValue) ?? .idea
+            GiftStatus(rawValue: statusRaw) ?? .idea
         }
         set {
-            statusRawValue = newValue.rawValue
+            statusRaw = newValue.rawValue
         }
     }
 
-    /// Dịp tặng quà
     public var occasion: Occasion {
         get {
-            Occasion(rawValue: occasionRawValue) ?? .christmas
+            Occasion(rawValue: occasionRaw) ?? .christmas
         }
         set {
-            occasionRawValue = newValue.rawValue
+            occasionRaw = newValue.rawValue
         }
     }
 
-    /// Kiểm tra xem món quà có bị trễ hạn hay không
-    /// Trễ hạn: có hạn, hạn trước hôm nay và chưa "Đã nhận" (hoặc "Đã gói")
-    public func isOverdue(referenceDate: Date = Date(), calendar: Calendar = .current) -> Bool {
+    /// Whether this gift is overdue (due < today and not yet Received or Wrapped)
+    public func isOverdue(referenceDate: Date = Date()) -> Bool {
         guard let due = dueDate else { return false }
-        if status.isCompleted { return false }
-        let startOfDue = calendar.startOfDay(for: due)
+        if status.isCompleted {
+            return false
+        }
+        let calendar = Calendar.current
         let startOfToday = calendar.startOfDay(for: referenceDate)
+        let startOfDue = calendar.startOfDay(for: due)
         return startOfDue < startOfToday
     }
 
-    /// Kiểm tra xem món quà đã được nhận hoặc đã gói chưa
-    public var isCompleted: Bool {
-        status.isCompleted
+    public var notificationIdentifier: String {
+        "gift-\(id.uuidString)"
     }
 }

@@ -1,96 +1,100 @@
 import Foundation
 import SwiftData
 
-/// Bộ khởi tạo dữ liệu mẫu lần chạy đầu tiên
+/// Initial sample data seeder for first launch
 public struct SeedData {
     public static let seededKey = "hasSeededInitialData"
 
     public static func seedInitialDataIfNeeded(context: ModelContext) {
-        // Kiểm tra cờ trong UserDefaults
         if UserDefaults.standard.bool(forKey: seededKey) {
             return
         }
 
-        // Kiểm tra xem đã có dữ liệu nào trong database chưa
         let descriptor = FetchDescriptor<Person>()
-        if let existingCount = try? context.fetchCount(descriptor), existingCount > 0 {
+        if let count = try? context.fetchCount(descriptor), count > 0 {
             UserDefaults.standard.set(true, forKey: seededKey)
             return
         }
 
-        let calendar = Calendar.current
-        let currentYear = calendar.component(.year, from: Date())
+        seed(context: context)
+        UserDefaults.standard.set(true, forKey: seededKey)
+        UserDefaults.standard.set(true, forKey: "hasLoadedSampleData")
+    }
 
-        // 1. Tạo 2 người nhận mẫu
+    public static func seed(context: ModelContext, currentYear: Int = Calendar.current.component(.year, from: Date())) {
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone.current
+
+        // 1. Create 2 sample recipients
         let mom = Person(
-            name: "Mẹ",
+            name: "Mom",
             budget: 2_000_000,
-            note: "Người phụ nữ tuyệt vời nhất gia đình"
+            note: "Most wonderful woman in the family"
         )
 
         let minh = Person(
-            name: "Minh (bạn thân)",
+            name: "Minh (best friend)",
             budget: 800_000,
-            note: "Bạn thân từ thời đại học"
+            note: "Best friend from university"
         )
 
         context.insert(mom)
         context.insert(minh)
 
-        // Tạo ngày hạn mẫu cho năm hiện tại
-        let dateDec15 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 15, hour: 12))
-        let dateDec20 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 20, hour: 12))
-        let dateDec10 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 10, hour: 12))
+        // 2. Dates for the current year
+        let dateDec15 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 15, hour: 9, minute: 0))
+        let dateDec20 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 20, hour: 9, minute: 0))
+        let dateDec10 = calendar.date(from: DateComponents(year: currentYear, month: 12, day: 10, hour: 9, minute: 0))
 
-        // 2. Tạo 3 món quà mẫu
+        // 3. Create 3 sample gifts
         let gift1 = Gift(
-            title: "Khăn len cashmere",
+            title: "Cashmere scarf",
             price: 650_000,
             status: .ordered,
             dueDate: dateDec15,
             occasion: .christmas,
-            note: "Màu kem nhã nhặn, chất len mềm ấm",
-            url: "https://example.com/khan-len",
+            note: "Light cream color, soft and warm cashmere",
+            url: "https://example.com/scarf",
             person: mom
         )
 
         let gift2 = Gift(
-            title: "Bộ trà thảo mộc",
+            title: "Herbal tea set",
             price: 300_000,
             status: .idea,
             dueDate: dateDec20,
             occasion: .christmas,
-            note: "Trà hoa cúc và bạc hà thư giãn",
-            url: "",
+            note: "Chamomile and mint relaxing tea",
+            url: nil,
             person: mom
         )
 
         let gift3 = Gift(
-            title: "Sách Atomic Habits",
+            title: "Atomic Habits book",
             price: 220_000,
             status: .wrapped,
             dueDate: dateDec10,
             occasion: .christmas,
-            note: "Bản bìa cứng tiếng Việt tái bản",
+            note: "Hardcover edition with bookmark",
             url: "https://example.com/atomic-habits",
             person: minh
         )
-
-        mom.gifts.append(gift1)
-        mom.gifts.append(gift2)
-        minh.gifts.append(gift3)
 
         context.insert(gift1)
         context.insert(gift2)
         context.insert(gift3)
 
+        mom.gifts.append(gift1)
+        mom.gifts.append(gift2)
+        minh.gifts.append(gift3)
+
         try? context.save()
 
-        // Lên lịch nhắc nhở
-        ReminderService.shared.scheduleReminder(for: gift1)
-        ReminderService.shared.scheduleReminder(for: gift2)
-        ReminderService.shared.scheduleReminder(for: gift3)
-
-        UserDefaults.standard.set(true, forKey: seededKey)
+        // Schedule local reminders
+        ReminderService.shared.updateReminder(for: gift1)
+        ReminderService.shared.updateReminder(for: gift2)
+        ReminderService.shared.updateReminder(for: gift3)
     }
 }
+
+public typealias SampleDataLoader = SeedData

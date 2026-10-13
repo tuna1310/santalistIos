@@ -1,8 +1,9 @@
 import Foundation
 import SwiftData
 
+/// Recipient model in the gift tracking list
 @Model
-public final class Person {
+public final class Person: Identifiable {
     public var id: UUID = UUID()
     public var name: String = ""
     public var budget: Int = 0
@@ -11,37 +12,58 @@ public final class Person {
     @Relationship(deleteRule: .cascade, inverse: \Gift.person)
     public var gifts: [Gift] = []
 
-    public init(id: UUID = UUID(), name: String, budget: Int = 0, note: String = "") {
+    public init(
+        id: UUID = UUID(),
+        name: String,
+        budget: Int = 0,
+        note: String = "",
+        gifts: [Gift] = []
+    ) {
         self.id = id
         self.name = name
-        self.budget = budget
+        self.budget = max(0, budget)
         self.note = note
-        self.gifts = []
+        self.gifts = gifts
     }
 
-    /// Tổng chi phí dự kiến cho toàn bộ quà của người này
+    /// Planned total value of all gifts for this recipient
     public var plannedAmount: Int {
         gifts.reduce(0) { $0 + $1.price }
     }
 
-    /// Tổng chi phí đã chi thực tế (quà ở trạng thái Đã đặt trở lên)
-    public var spentAmount: Int {
-        gifts.filter { $0.status.isSpent }.reduce(0) { $0 + $1.price }
+    public var totalGiftsPrice: Int {
+        plannedAmount
     }
 
-    /// Số tiền còn lại trong ngân sách (Ngân sách - Dự kiến)
-    public var remainingAmount: Int {
+    /// Actual spent amount (gifts with status Ordered or higher)
+    public var spentAmount: Int {
+        gifts.filter { $0.status.isCountedAsSpent }.reduce(0) { $0 + $1.price }
+    }
+
+    /// Remaining budget: Budget - Planned
+    public var remainingBudget: Int {
         budget - plannedAmount
     }
 
-    /// Kiểm tra người nhận này có đang bị vượt ngân sách không
+    public var remainingAmount: Int {
+        remainingBudget
+    }
+
+    /// Whether this recipient's planned gifts exceed their budget
     public var isOverBudget: Bool {
         plannedAmount > budget
     }
 
-    /// Tỷ lệ dự kiến trên ngân sách (0.0 đến 1.0+)
-    public var budgetUsageRatio: Double {
-        guard budget > 0 else { return plannedAmount > 0 ? 1.0 : 0.0 }
+    /// Budget progress ratio (0.0 to 1.0+)
+    public var budgetProgress: Double {
+        guard budget > 0 else {
+            return plannedAmount > 0 ? 1.0 : 0.0
+        }
         return Double(plannedAmount) / Double(budget)
+    }
+
+    /// Number of finished gifts
+    public var completedGiftsCount: Int {
+        gifts.filter { $0.status.isCompleted }.count
     }
 }

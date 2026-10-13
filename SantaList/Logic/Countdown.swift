@@ -1,18 +1,11 @@
 import Foundation
 
-/// Bộ đếm ngược ngày đến Giáng sinh (25/12)
+/// Christmas countdown calculator for December 25th
 public struct ChristmasCountdown {
-    /// Tính ngày Giáng sinh mục tiêu tiếp theo
+    /// Next Christmas target date (rolls over to next year after Dec 25)
     public static func nextChristmas(from referenceDate: Date = Date(), calendar: Calendar = .current) -> Date {
         let currentYear = calendar.component(.year, from: referenceDate)
-
-        var components = DateComponents()
-        components.year = currentYear
-        components.month = 12
-        components.day = 25
-        components.hour = 0
-        components.minute = 0
-        components.second = 0
+        var components = DateComponents(year: currentYear, month: 12, day: 25, hour: 0, minute: 0, second: 0)
 
         guard let targetThisYear = calendar.date(from: components) else {
             return referenceDate
@@ -22,7 +15,6 @@ public struct ChristmasCountdown {
         let startOfTargetThisYear = calendar.startOfDay(for: targetThisYear)
 
         if startOfToday > startOfTargetThisYear {
-            // Đã qua 25/12 năm nay -> đếm đến 25/12 năm sau
             components.year = currentYear + 1
             return calendar.date(from: components) ?? targetThisYear
         }
@@ -30,7 +22,7 @@ public struct ChristmasCountdown {
         return targetThisYear
     }
 
-    /// Số ngày còn lại đến Giáng sinh mục tiêu
+    /// Days remaining until the target Christmas date
     public static func daysRemaining(from referenceDate: Date = Date(), calendar: Calendar = .current) -> Int {
         let target = nextChristmas(from: referenceDate, calendar: calendar)
         let startOfToday = calendar.startOfDay(for: referenceDate)
@@ -40,15 +32,29 @@ public struct ChristmasCountdown {
         return max(0, diff.day ?? 0)
     }
 
-    /// Chuỗi thông báo đếm ngược thân thiện
+    /// Friendly English countdown string
     public static func countdownText(from referenceDate: Date = Date(), calendar: Calendar = .current) -> String {
         let days = daysRemaining(from: referenceDate, calendar: calendar)
         if days == 0 {
-            return "Hôm nay là Giáng sinh! 🎅"
+            return "Today is Christmas! 🎄"
         } else if days == 1 {
-            return "Còn 1 ngày đến Giáng sinh 🎄"
+            return "1 day until Christmas 🎅"
         } else {
-            return "Còn \(days) ngày đến Giáng sinh 🎄"
+            return "\(days) days until Christmas 🎄"
         }
+    }
+}
+
+public struct CountdownCalculator {
+    public static func targetChristmasDate(from referenceDate: Date = Date(), calendar: Calendar = .current) -> Date {
+        ChristmasCountdown.nextChristmas(from: referenceDate, calendar: calendar)
+    }
+
+    public static func daysRemaining(from referenceDate: Date = Date(), calendar: Calendar = .current) -> Int {
+        ChristmasCountdown.daysRemaining(from: referenceDate, calendar: calendar)
+    }
+
+    public static func countdownDisplayString(from referenceDate: Date = Date(), calendar: Calendar = .current) -> String {
+        ChristmasCountdown.countdownText(from: referenceDate, calendar: calendar)
     }
 }

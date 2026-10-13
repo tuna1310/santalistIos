@@ -7,486 +7,412 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		100100000000000000000000 /* SantaListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000000 /* SantaListApp.swift */; };
-		100100000000000000000001 /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000001 /* SeedData.swift */; };
-		100100000000000000000002 /* GiftStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000002 /* GiftStatus.swift */; };
-		100100000000000000000003 /* Occasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000003 /* Occasion.swift */; };
-		100100000000000000000004 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000004 /* Person.swift */; };
-		100100000000000000000005 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000005 /* Gift.swift */; };
-		100100000000000000000006 /* BudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000006 /* BudgetCalculator.swift */; };
-		100100000000000000000007 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000007 /* Formatters.swift */; };
-		100100000000000000000008 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000008 /* Countdown.swift */; };
-		100100000000000000000009 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000009 /* ReminderService.swift */; };
-		10010000000000000000000A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000A /* ContentView.swift */; };
-		10010000000000000000000B /* StatusChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000B /* StatusChipView.swift */; };
-		10010000000000000000000C /* BudgetProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000C /* BudgetProgressBar.swift */; };
-		10010000000000000000000D /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000D /* AppHeaderView.swift */; };
-		10010000000000000000000E /* AddEditGiftSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000E /* AddEditGiftSheet.swift */; };
-		10010000000000000000000F /* AddEditPersonSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20010000000000000000000F /* AddEditPersonSheet.swift */; };
-		100100000000000000000010 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000010 /* PersonDetailView.swift */; };
-		100100000000000000000011 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000011 /* PeopleView.swift */; };
-		100100000000000000000012 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000012 /* TimelineView.swift */; };
-		100100000000000000000013 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200100000000000000000013 /* BudgetView.swift */; };
-		110100000000000000000000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210100000000000000000000 /* Assets.xcassets */; };
-		110100000000000000000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 210100000000000000000001 /* Localizable.xcstrings */; };
-		110100000000000000000002 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 210100000000000000000002 /* PrivacyInfo.xcprivacy */; };
-		120100000000000000000000 /* BudgetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000000 /* BudgetCalculatorTests.swift */; };
-		120100000000000000000001 /* GiftStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000001 /* GiftStatusTests.swift */; };
-		120100000000000000000002 /* OverdueLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000002 /* OverdueLogicTests.swift */; };
-		120100000000000000000003 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000003 /* CountdownTests.swift */; };
-		120100000000000000000004 /* FormattersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000004 /* FormattersTests.swift */; };
-		120100000000000000000005 /* SwiftDataCascadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220100000000000000000005 /* SwiftDataCascadeTests.swift */; };
+		A0001010000000000000000 /* SantaListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001010000000000000000 /* SantaListApp.swift */; };
+		A0001020000000000000000 /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001020000000000000000 /* SeedData.swift */; };
+		A0001030000000000000000 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001030000000000000000 /* Gift.swift */; };
+		A0001040000000000000000 /* GiftOccasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001040000000000000000 /* GiftOccasion.swift */; };
+		A0001050000000000000000 /* GiftStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001050000000000000000 /* GiftStatus.swift */; };
+		A0001060000000000000000 /* Occasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001060000000000000000 /* Occasion.swift */; };
+		A0001070000000000000000 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001070000000000000000 /* Person.swift */; };
+		A0001080000000000000000 /* SampleDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001080000000000000000 /* SampleDataLoader.swift */; };
+		A0001090000000000000000 /* BudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001090000000000000000 /* BudgetCalculator.swift */; };
+		A0001100000000000000000 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001100000000000000000 /* Countdown.swift */; };
+		A0001110000000000000000 /* CountdownCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001110000000000000000 /* CountdownCalculator.swift */; };
+		A0001120000000000000000 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001120000000000000000 /* Formatters.swift */; };
+		A0001130000000000000000 /* OverdueChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001130000000000000000 /* OverdueChecker.swift */; };
+		A0001140000000000000000 /* ReminderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001140000000000000000 /* ReminderService.swift */; };
+		A0001150000000000000000 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001150000000000000000 /* ContentView.swift */; };
+		A0001160000000000000000 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001160000000000000000 /* MainTabView.swift */; };
+		A0001170000000000000000 /* BudgetChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001170000000000000000 /* BudgetChartView.swift */; };
+		A0001180000000000000000 /* BudgetOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001180000000000000000 /* BudgetOverviewView.swift */; };
+		A0001190000000000000000 /* BudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001190000000000000000 /* BudgetView.swift */; };
+		A0001200000000000000000 /* AddEditGiftSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001200000000000000000 /* AddEditGiftSheet.swift */; };
+		A0001210000000000000000 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001210000000000000000 /* AppColors.swift */; };
+		A0001220000000000000000 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001220000000000000000 /* AppHeaderView.swift */; };
+		A0001230000000000000000 /* BudgetProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001230000000000000000 /* BudgetProgressBar.swift */; };
+		A0001240000000000000000 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001240000000000000000 /* EmptyStateView.swift */; };
+		A0001250000000000000000 /* GiftFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001250000000000000000 /* GiftFormSheet.swift */; };
+		A0001260000000000000000 /* GiftRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001260000000000000000 /* GiftRowView.swift */; };
+		A0001270000000000000000 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001270000000000000000 /* HeaderView.swift */; };
+		A0001280000000000000000 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001280000000000000000 /* ProgressBarView.swift */; };
+		A0001290000000000000000 /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001290000000000000000 /* StatusBadgeView.swift */; };
+		A0001300000000000000000 /* StatusChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001300000000000000000 /* StatusChipView.swift */; };
+		A0001310000000000000000 /* AddEditPersonSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001310000000000000000 /* AddEditPersonSheet.swift */; };
+		A0001320000000000000000 /* PeopleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001320000000000000000 /* PeopleListView.swift */; };
+		A0001330000000000000000 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001330000000000000000 /* PeopleView.swift */; };
+		A0001340000000000000000 /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001340000000000000000 /* PersonDetailView.swift */; };
+		A0001350000000000000000 /* PersonFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001350000000000000000 /* PersonFormSheet.swift */; };
+		A0001360000000000000000 /* TimelineListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001360000000000000000 /* TimelineListView.swift */; };
+		A0001370000000000000000 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001370000000000000000 /* TimelineView.swift */; };
+		A0001380000000000000000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0001380000000000000000 /* Assets.xcassets */; };
+		A0001400000000000000000 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B0001400000000000000000 /* Localizable.xcstrings */; };
+		A0001410000000000000000 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B0001410000000000000000 /* PrivacyInfo.xcprivacy */; };
+		A0001420000000000000000 /* BudgetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001420000000000000000 /* BudgetCalculatorTests.swift */; };
+		A0001430000000000000000 /* CascadeDeleteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001430000000000000000 /* CascadeDeleteTests.swift */; };
+		A0001440000000000000000 /* CountdownTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001440000000000000000 /* CountdownTests.swift */; };
+		A0001450000000000000000 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001450000000000000000 /* FormatterTests.swift */; };
+		A0001460000000000000000 /* FormattersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001460000000000000000 /* FormattersTests.swift */; };
+		A0001470000000000000000 /* GiftStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001470000000000000000 /* GiftStatusTests.swift */; };
+		A0001480000000000000000 /* OverdueLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001480000000000000000 /* OverdueLogicTests.swift */; };
+		A0001490000000000000000 /* SwiftDataCascadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001490000000000000000 /* SwiftDataCascadeTests.swift */; };
+		A0001500000000000000000 /* SantaListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0001500000000000000000 /* SantaListUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C00000000000000000000001 /* PBXContainerItemProxy */ = {
+		3001 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = P00000000000000000000001 /* Project object */;
+			containerPortal = 0001 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A00000000000000000000001;
+			remoteGlobalIDString = 4001;
+			remoteInfo = SantaList;
+		};
+		3002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4001;
 			remoteInfo = SantaList;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		240100000000000000000001 /* SantaList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SantaList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		240100000000000000000002 /* SantaListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantaListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		230100000000000000000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SantaList/Info.plist; sourceTree = "<group>"; };
-		200100000000000000000000 /* SantaListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/App/SantaListApp.swift"; sourceTree = "<group>"; };
-		200100000000000000000001 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/App/SeedData.swift"; sourceTree = "<group>"; };
-		200100000000000000000002 /* GiftStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Models/GiftStatus.swift"; sourceTree = "<group>"; };
-		200100000000000000000003 /* Occasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Models/Occasion.swift"; sourceTree = "<group>"; };
-		200100000000000000000004 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Models/Person.swift"; sourceTree = "<group>"; };
-		200100000000000000000005 /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Models/Gift.swift"; sourceTree = "<group>"; };
-		200100000000000000000006 /* BudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Logic/BudgetCalculator.swift"; sourceTree = "<group>"; };
-		200100000000000000000007 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Logic/Formatters.swift"; sourceTree = "<group>"; };
-		200100000000000000000008 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Logic/Countdown.swift"; sourceTree = "<group>"; };
-		200100000000000000000009 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Services/ReminderService.swift"; sourceTree = "<group>"; };
-		20010000000000000000000A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/ContentView.swift"; sourceTree = "<group>"; };
-		20010000000000000000000B /* StatusChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Components/StatusChipView.swift"; sourceTree = "<group>"; };
-		20010000000000000000000C /* BudgetProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Components/BudgetProgressBar.swift"; sourceTree = "<group>"; };
-		20010000000000000000000D /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Components/AppHeaderView.swift"; sourceTree = "<group>"; };
-		20010000000000000000000E /* AddEditGiftSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Components/AddEditGiftSheet.swift"; sourceTree = "<group>"; };
-		20010000000000000000000F /* AddEditPersonSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/People/AddEditPersonSheet.swift"; sourceTree = "<group>"; };
-		200100000000000000000010 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/People/PersonDetailView.swift"; sourceTree = "<group>"; };
-		200100000000000000000011 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/People/PeopleView.swift"; sourceTree = "<group>"; };
-		200100000000000000000012 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Timeline/TimelineView.swift"; sourceTree = "<group>"; };
-		200100000000000000000013 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaList/Views/Budget/BudgetView.swift"; sourceTree = "<group>"; };
-		210100000000000000000000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "folder.assetcatalog"; path = "SantaList/Resources/Assets.xcassets"; sourceTree = "<group>"; };
-		210100000000000000000001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = "text.json"; path = "SantaList/Resources/Localizable.xcstrings"; sourceTree = "<group>"; };
-		210100000000000000000002 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = "text.xml"; path = "SantaList/Resources/PrivacyInfo.xcprivacy"; sourceTree = "<group>"; };
-		220100000000000000000000 /* BudgetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/BudgetCalculatorTests.swift"; sourceTree = "<group>"; };
-		220100000000000000000001 /* GiftStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/GiftStatusTests.swift"; sourceTree = "<group>"; };
-		220100000000000000000002 /* OverdueLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/OverdueLogicTests.swift"; sourceTree = "<group>"; };
-		220100000000000000000003 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/CountdownTests.swift"; sourceTree = "<group>"; };
-		220100000000000000000004 /* FormattersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/FormattersTests.swift"; sourceTree = "<group>"; };
-		220100000000000000000005 /* SwiftDataCascadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SantaListTests/SwiftDataCascadeTests.swift"; sourceTree = "<group>"; };
+		2005 /* SantaList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SantaList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2006 /* SantaListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantaListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2007 /* SantaListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SantaListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0001010000000000000000 /* SantaListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaListApp.swift; sourceTree = "<group>"; };
+		B0001020000000000000000 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
+		B0001030000000000000000 /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
+		B0001040000000000000000 /* GiftOccasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftOccasion.swift; sourceTree = "<group>"; };
+		B0001050000000000000000 /* GiftStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStatus.swift; sourceTree = "<group>"; };
+		B0001060000000000000000 /* Occasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasion.swift; sourceTree = "<group>"; };
+		B0001070000000000000000 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		B0001080000000000000000 /* SampleDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataLoader.swift; sourceTree = "<group>"; };
+		B0001090000000000000000 /* BudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculator.swift; sourceTree = "<group>"; };
+		B0001100000000000000000 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		B0001110000000000000000 /* CountdownCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCalculator.swift; sourceTree = "<group>"; };
+		B0001120000000000000000 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		B0001130000000000000000 /* OverdueChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverdueChecker.swift; sourceTree = "<group>"; };
+		B0001140000000000000000 /* ReminderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderService.swift; sourceTree = "<group>"; };
+		B0001150000000000000000 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B0001160000000000000000 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B0001170000000000000000 /* BudgetChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetChartView.swift; sourceTree = "<group>"; };
+		B0001180000000000000000 /* BudgetOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewView.swift; sourceTree = "<group>"; };
+		B0001190000000000000000 /* BudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetView.swift; sourceTree = "<group>"; };
+		B0001200000000000000000 /* AddEditGiftSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditGiftSheet.swift; sourceTree = "<group>"; };
+		B0001210000000000000000 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		B0001220000000000000000 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
+		B0001230000000000000000 /* BudgetProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressBar.swift; sourceTree = "<group>"; };
+		B0001240000000000000000 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		B0001250000000000000000 /* GiftFormSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftFormSheet.swift; sourceTree = "<group>"; };
+		B0001260000000000000000 /* GiftRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRowView.swift; sourceTree = "<group>"; };
+		B0001270000000000000000 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		B0001280000000000000000 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		B0001290000000000000000 /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
+		B0001300000000000000000 /* StatusChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusChipView.swift; sourceTree = "<group>"; };
+		B0001310000000000000000 /* AddEditPersonSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditPersonSheet.swift; sourceTree = "<group>"; };
+		B0001320000000000000000 /* PeopleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListView.swift; sourceTree = "<group>"; };
+		B0001330000000000000000 /* PeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
+		B0001340000000000000000 /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		B0001350000000000000000 /* PersonFormSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonFormSheet.swift; sourceTree = "<group>"; };
+		B0001360000000000000000 /* TimelineListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineListView.swift; sourceTree = "<group>"; };
+		B0001370000000000000000 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		B0001380000000000000000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0001390000000000000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0001400000000000000000 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		B0001410000000000000000 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		B0001420000000000000000 /* BudgetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculatorTests.swift; sourceTree = "<group>"; };
+		B0001430000000000000000 /* CascadeDeleteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CascadeDeleteTests.swift; sourceTree = "<group>"; };
+		B0001440000000000000000 /* CountdownTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTests.swift; sourceTree = "<group>"; };
+		B0001450000000000000000 /* FormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
+		B0001460000000000000000 /* FormattersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattersTests.swift; sourceTree = "<group>"; };
+		B0001470000000000000000 /* GiftStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStatusTests.swift; sourceTree = "<group>"; };
+		B0001480000000000000000 /* OverdueLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverdueLogicTests.swift; sourceTree = "<group>"; };
+		B0001490000000000000000 /* SwiftDataCascadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataCascadeTests.swift; sourceTree = "<group>"; };
+		B0001500000000000000000 /* SantaListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SantaListUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B00000000000000000000002 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B00000000000000000000005 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+		5001 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		5002 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		5003 /* Frameworks */ = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		G00000000000000000000001 = {
-			isa = PBXGroup;
-			children = (
-				G00000000000000000000002 /* SantaList */,
-				G00000000000000000000003 /* SantaListTests */,
-				G00000000000000000000004 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		G00000000000000000000002 /* SantaList */ = {
-			isa = PBXGroup;
-			children = (
-				200100000000000000000000,
-				200100000000000000000001,
-				200100000000000000000002,
-				200100000000000000000003,
-				200100000000000000000004,
-				200100000000000000000005,
-				200100000000000000000006,
-				200100000000000000000007,
-				200100000000000000000008,
-				200100000000000000000009,
-				20010000000000000000000A,
-				20010000000000000000000B,
-				20010000000000000000000C,
-				20010000000000000000000D,
-				20010000000000000000000E,
-				20010000000000000000000F,
-				200100000000000000000010,
-				200100000000000000000011,
-				200100000000000000000012,
-				200100000000000000000013,
-				210100000000000000000000,
-				210100000000000000000001,
-				210100000000000000000002,
-				230100000000000000000001,
-			);
-			name = SantaList;
-			sourceTree = "<group>";
-		};
-		G00000000000000000000003 /* SantaListTests */ = {
-			isa = PBXGroup;
-			children = (
-				220100000000000000000000,
-				220100000000000000000001,
-				220100000000000000000002,
-				220100000000000000000003,
-				220100000000000000000004,
-				220100000000000000000005,
-			);
-			name = SantaListTests;
-			sourceTree = "<group>";
-		};
-		G00000000000000000000004 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				240100000000000000000001 /* SantaList.app */,
-				240100000000000000000002 /* SantaListTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
+		C001 /* App */ = { isa = PBXGroup; children = (
+				B0001010000000000000000 /* SantaListApp.swift */,
+				B0001020000000000000000 /* SeedData.swift */,
+			); path = App; sourceTree = "<group>"; };
+		C002 /* Models */ = { isa = PBXGroup; children = (
+				B0001030000000000000000 /* Gift.swift */,
+				B0001040000000000000000 /* GiftOccasion.swift */,
+				B0001050000000000000000 /* GiftStatus.swift */,
+				B0001060000000000000000 /* Occasion.swift */,
+				B0001070000000000000000 /* Person.swift */,
+				B0001080000000000000000 /* SampleDataLoader.swift */,
+			); path = Models; sourceTree = "<group>"; };
+		C003 /* Logic */ = { isa = PBXGroup; children = (
+				B0001090000000000000000 /* BudgetCalculator.swift */,
+				B0001100000000000000000 /* Countdown.swift */,
+				B0001110000000000000000 /* CountdownCalculator.swift */,
+				B0001120000000000000000 /* Formatters.swift */,
+				B0001130000000000000000 /* OverdueChecker.swift */,
+			); path = Logic; sourceTree = "<group>"; };
+		C004 /* Services */ = { isa = PBXGroup; children = (
+				B0001140000000000000000 /* ReminderService.swift */,
+			); path = Services; sourceTree = "<group>"; };
+		C0051 /* Budget */ = { isa = PBXGroup; children = (
+				B0001170000000000000000 /* BudgetChartView.swift */,
+				B0001180000000000000000 /* BudgetOverviewView.swift */,
+				B0001190000000000000000 /* BudgetView.swift */,
+			); path = Budget; sourceTree = "<group>"; };
+		C0052 /* Components */ = { isa = PBXGroup; children = (
+				B0001200000000000000000 /* AddEditGiftSheet.swift */,
+				B0001210000000000000000 /* AppColors.swift */,
+				B0001220000000000000000 /* AppHeaderView.swift */,
+				B0001230000000000000000 /* BudgetProgressBar.swift */,
+				B0001240000000000000000 /* EmptyStateView.swift */,
+				B0001250000000000000000 /* GiftFormSheet.swift */,
+				B0001260000000000000000 /* GiftRowView.swift */,
+				B0001270000000000000000 /* HeaderView.swift */,
+				B0001280000000000000000 /* ProgressBarView.swift */,
+				B0001290000000000000000 /* StatusBadgeView.swift */,
+				B0001300000000000000000 /* StatusChipView.swift */,
+			); path = Components; sourceTree = "<group>"; };
+		C0053 /* People */ = { isa = PBXGroup; children = (
+				B0001310000000000000000 /* AddEditPersonSheet.swift */,
+				B0001320000000000000000 /* PeopleListView.swift */,
+				B0001330000000000000000 /* PeopleView.swift */,
+				B0001340000000000000000 /* PersonDetailView.swift */,
+				B0001350000000000000000 /* PersonFormSheet.swift */,
+			); path = People; sourceTree = "<group>"; };
+		C0054 /* Timeline */ = { isa = PBXGroup; children = (
+				B0001360000000000000000 /* TimelineListView.swift */,
+				B0001370000000000000000 /* TimelineView.swift */,
+			); path = Timeline; sourceTree = "<group>"; };
+		C005 /* Views */ = { isa = PBXGroup; children = (
+				B0001150000000000000000 /* ContentView.swift */,
+				B0001160000000000000000 /* MainTabView.swift */,
+				C0051 /* Budget */, C0052 /* Components */, C0053 /* People */, C0054 /* Timeline */,
+			); path = Views; sourceTree = "<group>"; };
+		C006 /* Resources */ = { isa = PBXGroup; children = (
+				B0001380000000000000000 /* Assets.xcassets */,
+				B0001390000000000000000 /* Info.plist */,
+				B0001400000000000000000 /* Localizable.xcstrings */,
+				B0001410000000000000000 /* PrivacyInfo.xcprivacy */,
+			); path = Resources; sourceTree = "<group>"; };
+		6002 /* SantaList */ = { isa = PBXGroup; children = (
+				C001 /* App */, C002 /* Models */, C003 /* Logic */, C004 /* Services */, C005 /* Views */, C006 /* Resources */,
+			); path = SantaList; sourceTree = "<group>"; };
+		6003 /* SantaListTests */ = { isa = PBXGroup; children = (
+				B0001420000000000000000 /* BudgetCalculatorTests.swift */,
+				B0001430000000000000000 /* CascadeDeleteTests.swift */,
+				B0001440000000000000000 /* CountdownTests.swift */,
+				B0001450000000000000000 /* FormatterTests.swift */,
+				B0001460000000000000000 /* FormattersTests.swift */,
+				B0001470000000000000000 /* GiftStatusTests.swift */,
+				B0001480000000000000000 /* OverdueLogicTests.swift */,
+				B0001490000000000000000 /* SwiftDataCascadeTests.swift */,
+			); path = SantaListTests; sourceTree = "<group>"; };
+		6005 /* SantaListUITests */ = { isa = PBXGroup; children = (
+				B0001500000000000000000 /* SantaListUITests.swift */,
+			); path = SantaListUITests; sourceTree = "<group>"; };
+		6004 /* Products */ = { isa = PBXGroup; children = (
+				2005 /* SantaList.app */, 2006 /* SantaListTests.xctest */, 2007 /* SantaListUITests.xctest */,
+			); name = Products; sourceTree = "<group>"; };
+		6001 = { isa = PBXGroup; children = (
+				6002 /* SantaList */, 6003 /* SantaListTests */, 6005 /* SantaListUITests */, 6004 /* Products */,
+			); sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A00000000000000000000001 /* SantaList */ = {
+		4001 /* SantaList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E00000000000000000000006 /* Build configuration list for PBXNativeTarget "SantaList" */;
-			buildPhases = (
-				B00000000000000000000001 /* Sources */,
-				B00000000000000000000002 /* Frameworks */,
-				B00000000000000000000003 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SantaList;
-			productName = SantaList;
-			productReference = 240100000000000000000001 /* SantaList.app */;
-			productType = "com.apple.product-type.application";
+			buildConfigurationList = 7001 /* Build configuration list for PBXNativeTarget "SantaList" */;
+			buildPhases = ( 8001 /* Sources */, 5001 /* Frameworks */, 8002 /* Resources */, );
+			buildRules = (); dependencies = ();
+			name = SantaList; productName = SantaList; productReference = 2005 /* SantaList.app */; productType = "com.apple.product-type.application";
 		};
-		A00000000000000000000002 /* SantaListTests */ = {
+		4002 /* SantaListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E00000000000000000000009 /* Build configuration list for PBXNativeTarget "SantaListTests" */;
-			buildPhases = (
-				B00000000000000000000004 /* Sources */,
-				B00000000000000000000005 /* Frameworks */,
-				B00000000000000000000006 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D00000000000000000000001 /* PBXTargetDependency */,
-			);
-			name = SantaListTests;
-			productName = SantaListTests;
-			productReference = 240100000000000000000002 /* SantaListTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			buildConfigurationList = 7002 /* Build configuration list for PBXNativeTarget "SantaListTests" */;
+			buildPhases = ( 8003 /* Sources */, 5002 /* Frameworks */, 8004 /* Resources */, );
+			buildRules = (); dependencies = ( 9001 /* PBXTargetDependency */, );
+			name = SantaListTests; productName = SantaListTests; productReference = 2006 /* SantaListTests.xctest */; productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4003 /* SantaListUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7004 /* Build configuration list for PBXNativeTarget "SantaListUITests" */;
+			buildPhases = ( 8005 /* Sources */, 5003 /* Frameworks */, 8006 /* Resources */, );
+			buildRules = (); dependencies = ( 9002 /* PBXTargetDependency */, );
+			name = SantaListUITests; productName = SantaListUITests; productReference = 2007 /* SantaListUITests.xctest */; productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		P00000000000000000000001 /* Project object */ = {
+		0001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A00000000000000000000001 = {
-						CreatedOnToolsVersion = 15.0;
-					};
-					A00000000000000000000002 = {
-						CreatedOnToolsVersion = 15.0;
-						TestTargetID = A00000000000000000000001;
-					};
+					4001 = { CreatedOnToolsVersion = 15.0; };
+					4002 = { CreatedOnToolsVersion = 15.0; TestTargetID = 4001; };
+					4003 = { CreatedOnToolsVersion = 15.0; TestTargetID = 4001; };
 				};
 			};
-			buildConfigurationList = E00000000000000000000003 /* Build configuration list for PBXProject "SantaList" */;
+			buildConfigurationList = 7003 /* Build configuration list for PBXProject "SantaList" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = vi;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-				vi,
-				en,
-				Base,
-			);
-			mainGroup = G00000000000000000000001;
-			productRefGroup = G00000000000000000000004 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				A00000000000000000000001 /* SantaList */,
-				A00000000000000000000002 /* SantaListTests */,
-			);
+			knownRegions = ( en, Base, );
+			mainGroup = 6001;
+			productRefGroup = 6004 /* Products */;
+			projectDirPath = ""; projectRoot = "";
+			targets = ( 4001 /* SantaList */, 4002 /* SantaListTests */, 4003 /* SantaListUITests */, );
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B00000000000000000000003 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				110100000000000000000000 /* Assets.xcassets in Resources */,
-				110100000000000000000001 /* Localizable.xcstrings in Resources */,
-				110100000000000000000002 /* PrivacyInfo.xcprivacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B00000000000000000000006 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+		8002 /* Resources */ = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (
+				A0001380000000000000000 /* Assets.xcassets in Resources */,
+				A0001400000000000000000 /* Localizable.xcstrings in Resources */,
+				A0001410000000000000000 /* PrivacyInfo.xcprivacy in Resources */,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		8004 /* Resources */ = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		8006 /* Resources */ = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B00000000000000000000001 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				100100000000000000000000 /* SantaListApp.swift in Sources */,
-				100100000000000000000001 /* SeedData.swift in Sources */,
-				100100000000000000000002 /* GiftStatus.swift in Sources */,
-				100100000000000000000003 /* Occasion.swift in Sources */,
-				100100000000000000000004 /* Person.swift in Sources */,
-				100100000000000000000005 /* Gift.swift in Sources */,
-				100100000000000000000006 /* BudgetCalculator.swift in Sources */,
-				100100000000000000000007 /* Formatters.swift in Sources */,
-				100100000000000000000008 /* Countdown.swift in Sources */,
-				100100000000000000000009 /* ReminderService.swift in Sources */,
-				10010000000000000000000A /* ContentView.swift in Sources */,
-				10010000000000000000000B /* StatusChipView.swift in Sources */,
-				10010000000000000000000C /* BudgetProgressBar.swift in Sources */,
-				10010000000000000000000D /* AppHeaderView.swift in Sources */,
-				10010000000000000000000E /* AddEditGiftSheet.swift in Sources */,
-				10010000000000000000000F /* AddEditPersonSheet.swift in Sources */,
-				100100000000000000000010 /* PersonDetailView.swift in Sources */,
-				100100000000000000000011 /* PeopleView.swift in Sources */,
-				100100000000000000000012 /* TimelineView.swift in Sources */,
-				100100000000000000000013 /* BudgetView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B00000000000000000000004 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				120100000000000000000000 /* BudgetCalculatorTests.swift in Sources */,
-				120100000000000000000001 /* GiftStatusTests.swift in Sources */,
-				120100000000000000000002 /* OverdueLogicTests.swift in Sources */,
-				120100000000000000000003 /* CountdownTests.swift in Sources */,
-				120100000000000000000004 /* FormattersTests.swift in Sources */,
-				120100000000000000000005 /* SwiftDataCascadeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
+		8001 /* Sources */ = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				A0001010000000000000000 /* SantaListApp.swift in Sources */,
+				A0001020000000000000000 /* SeedData.swift in Sources */,
+				A0001030000000000000000 /* Gift.swift in Sources */,
+				A0001040000000000000000 /* GiftOccasion.swift in Sources */,
+				A0001050000000000000000 /* GiftStatus.swift in Sources */,
+				A0001060000000000000000 /* Occasion.swift in Sources */,
+				A0001070000000000000000 /* Person.swift in Sources */,
+				A0001080000000000000000 /* SampleDataLoader.swift in Sources */,
+				A0001090000000000000000 /* BudgetCalculator.swift in Sources */,
+				A0001100000000000000000 /* Countdown.swift in Sources */,
+				A0001110000000000000000 /* CountdownCalculator.swift in Sources */,
+				A0001120000000000000000 /* Formatters.swift in Sources */,
+				A0001130000000000000000 /* OverdueChecker.swift in Sources */,
+				A0001140000000000000000 /* ReminderService.swift in Sources */,
+				A0001150000000000000000 /* ContentView.swift in Sources */,
+				A0001160000000000000000 /* MainTabView.swift in Sources */,
+				A0001170000000000000000 /* BudgetChartView.swift in Sources */,
+				A0001180000000000000000 /* BudgetOverviewView.swift in Sources */,
+				A0001190000000000000000 /* BudgetView.swift in Sources */,
+				A0001200000000000000000 /* AddEditGiftSheet.swift in Sources */,
+				A0001210000000000000000 /* AppColors.swift in Sources */,
+				A0001220000000000000000 /* AppHeaderView.swift in Sources */,
+				A0001230000000000000000 /* BudgetProgressBar.swift in Sources */,
+				A0001240000000000000000 /* EmptyStateView.swift in Sources */,
+				A0001250000000000000000 /* GiftFormSheet.swift in Sources */,
+				A0001260000000000000000 /* GiftRowView.swift in Sources */,
+				A0001270000000000000000 /* HeaderView.swift in Sources */,
+				A0001280000000000000000 /* ProgressBarView.swift in Sources */,
+				A0001290000000000000000 /* StatusBadgeView.swift in Sources */,
+				A0001300000000000000000 /* StatusChipView.swift in Sources */,
+				A0001310000000000000000 /* AddEditPersonSheet.swift in Sources */,
+				A0001320000000000000000 /* PeopleListView.swift in Sources */,
+				A0001330000000000000000 /* PeopleView.swift in Sources */,
+				A0001340000000000000000 /* PersonDetailView.swift in Sources */,
+				A0001350000000000000000 /* PersonFormSheet.swift in Sources */,
+				A0001360000000000000000 /* TimelineListView.swift in Sources */,
+				A0001370000000000000000 /* TimelineView.swift in Sources */,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		8003 /* Sources */ = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				A0001420000000000000000 /* BudgetCalculatorTests.swift in Sources */,
+				A0001430000000000000000 /* CascadeDeleteTests.swift in Sources */,
+				A0001440000000000000000 /* CountdownTests.swift in Sources */,
+				A0001450000000000000000 /* FormatterTests.swift in Sources */,
+				A0001460000000000000000 /* FormattersTests.swift in Sources */,
+				A0001470000000000000000 /* GiftStatusTests.swift in Sources */,
+				A0001480000000000000000 /* OverdueLogicTests.swift in Sources */,
+				A0001490000000000000000 /* SwiftDataCascadeTests.swift in Sources */,
+			); runOnlyForDeploymentPostprocessing = 0; };
+		8005 /* Sources */ = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (
+				A0001500000000000000000 /* SantaListUITests.swift in Sources */,
+			); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D00000000000000000000001 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A00000000000000000000001 /* SantaList */;
-			targetProxy = C00000000000000000000001 /* PBXContainerItemProxy */;
-		};
+		9001 /* PBXTargetDependency */ = { isa = PBXTargetDependency; target = 4001 /* SantaList */; targetProxy = 3001 /* PBXContainerItemProxy */; };
+		9002 /* PBXTargetDependency */ = { isa = PBXTargetDependency; target = 4001 /* SantaList */; targetProxy = 3002 /* PBXContainerItemProxy */; };
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		E00000000000000000000001 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		E00000000000000000000002 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ENABLE_MODULES = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_OPTIMIZATION_LEVEL = s;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = "wholemodule";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E00000000000000000000004 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = SantaList/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SantaList;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santalist.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E00000000000000000000005 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = SantaList/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = SantaList;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santalist.app;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		E00000000000000000000007 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantaList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SantaList";
-			};
-			name = Debug;
-		};
-		E00000000000000000000008 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantaList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SantaList";
-			};
-			name = Release;
-		};
+		7004 /* Debug */ = { isa = XCBuildConfiguration; buildSettings = {
+			ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = SantaList/Resources/Info.plist; INFOPLIST_KEY_CFBundleDisplayName = "SantaList";
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0; LD_RUNPATH_SEARCH_PATHS = ( "$(inherited)", "@executable_path/Frameworks", );
+			MARKETING_VERSION = 1.0.0; PRODUCT_BUNDLE_IDENTIFIER = com.santalist.app; PRODUCT_NAME = "$(TARGET_NAME)";
+			SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+		}; name = Debug; };
+		7005 /* Release */ = { isa = XCBuildConfiguration; buildSettings = {
+			ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon; ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+			CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = ""; ENABLE_PREVIEWS = YES;
+			GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = SantaList/Resources/Info.plist; INFOPLIST_KEY_CFBundleDisplayName = "SantaList";
+			IPHONEOS_DEPLOYMENT_TARGET = 17.0; LD_RUNPATH_SEARCH_PATHS = ( "$(inherited)", "@executable_path/Frameworks", );
+			MARKETING_VERSION = 1.0.0; PRODUCT_BUNDLE_IDENTIFIER = com.santalist.app; PRODUCT_NAME = "$(TARGET_NAME)";
+			SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+		}; name = Release; };
+		7006 /* Debug */ = { isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = "";
+			GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantaList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SantaList";
+		}; name = Debug; };
+		7007 /* Release */ = { isa = XCBuildConfiguration; buildSettings = {
+			BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = "";
+			GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SantaList.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SantaList";
+		}; name = Release; };
+		7010 /* Debug */ = { isa = XCBuildConfiguration; buildSettings = {
+			CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = "";
+			GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_TARGET_NAME = SantaList; USES_XCTRUNNER = YES;
+		}; name = Debug; };
+		7011 /* Release */ = { isa = XCBuildConfiguration; buildSettings = {
+			CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; DEVELOPMENT_TEAM = "";
+			GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; MARKETING_VERSION = 1.0.0;
+			PRODUCT_BUNDLE_IDENTIFIER = com.santalist.appUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2";
+			TEST_TARGET_NAME = SantaList; USES_XCTRUNNER = YES;
+		}; name = Release; };
+		7008 /* Debug */ = { isa = XCBuildConfiguration; buildSettings = {
+			ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ANALYZER_NONNULL = YES; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES;
+			ENABLE_STRICT_OBJC_MSGSEND = YES; ENABLE_TESTABILITY = YES; GCC_DYNAMIC_NO_PIC = NO; GCC_OPTIMIZATION_LEVEL = 0;
+			GCC_PREPROCESSOR_DEFINITIONS = ( "DEBUG=1", "$(inherited)", ); GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+			GCC_WARN_64_TO_32_BIT_CONVERSION = YES; GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR; GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+			MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE; MTL_FAST_MATH = YES; ONLY_ACTIVE_ARCH = YES;
+			SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+		}; name = Debug; };
+		7009 /* Release */ = { isa = XCBuildConfiguration; buildSettings = {
+			ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ANALYZER_NONNULL = YES; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES;
+			ENABLE_NS_ASSERTIONS = NO; ENABLE_STRICT_OBJC_MSGSEND = YES; GCC_NO_COMMON_BLOCKS = YES;
+			GCC_WARN_64_TO_32_BIT_CONVERSION = YES; GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR; GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+			MTL_ENABLE_DEBUG_INFO = NO; MTL_FAST_MATH = YES; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O";
+		}; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E00000000000000000000003 /* Build configuration list for PBXProject "SantaList" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E00000000000000000000001 /* Debug */,
-				E00000000000000000000002 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		7001 /* Build configuration list for PBXNativeTarget "SantaList" */ = {
+			isa = XCConfigurationList; buildConfigurations = ( 7004 /* Debug */, 7005 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;
 		};
-		E00000000000000000000006 /* Build configuration list for PBXNativeTarget "SantaList" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E00000000000000000000004 /* Debug */,
-				E00000000000000000000005 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		7002 /* Build configuration list for PBXNativeTarget "SantaListTests" */ = {
+			isa = XCConfigurationList; buildConfigurations = ( 7006 /* Debug */, 7007 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;
 		};
-		E00000000000000000000009 /* Build configuration list for PBXNativeTarget "SantaListTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E00000000000000000000007 /* Debug */,
-				E00000000000000000000008 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+		7004 /* Build configuration list for PBXNativeTarget "SantaListUITests" */ = {
+			isa = XCConfigurationList; buildConfigurations = ( 7010 /* Debug */, 7011 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;
+		};
+		7003 /* Build configuration list for PBXProject "SantaList" */ = {
+			isa = XCConfigurationList; buildConfigurations = ( 7008 /* Debug */, 7009 /* Release */, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = P00000000000000000000001 /* Project object */;
+	rootObject = 0001 /* Project object */;
 }

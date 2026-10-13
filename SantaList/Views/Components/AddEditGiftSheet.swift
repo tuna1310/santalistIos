@@ -1,26 +1,31 @@
 import SwiftUI
 import SwiftData
 
-/// Sheet thêm mới hoặc chỉnh sửa món quà
-struct AddEditGiftSheet: View {
+/// Add or edit gift sheet with validation errors displayed directly below inputs
+public struct AddEditGiftSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Person.name) private var people: [Person]
 
-    var giftToEdit: Gift? = nil
-    var preselectedPerson: Person? = nil
+    public var giftToEdit: Gift? = nil
+    public var preselectedPerson: Person? = nil
 
-    @State private var selectedPerson: Person?
     @State private var title: String = ""
     @State private var priceText: String = ""
-    @State private var hasDueDate: Bool = false
-    @State private var dueDate: Date = Date()
     @State private var occasion: Occasion = .christmas
     @State private var status: GiftStatus = .idea
+    @State private var hasDueDate: Bool = false
+    @State private var dueDate: Date = Date()
     @State private var note: String = ""
     @State private var url: String = ""
+    @State private var selectedPerson: Person? = nil
 
     @State private var isSubmitted: Bool = false
+
+    public init(giftToEdit: Gift? = nil, preselectedPerson: Person? = nil) {
+        self.giftToEdit = giftToEdit
+        self.preselectedPerson = preselectedPerson
+    }
 
     private var isEditing: Bool {
         giftToEdit != nil
@@ -41,24 +46,24 @@ struct AddEditGiftSheet: View {
 
     private var titleValidationError: String? {
         if isSubmitted && trimmedTitle.isEmpty {
-            return "Vui lòng nhập tên món quà"
+            return "Gift title cannot be empty"
         }
         return nil
     }
 
     private var priceValidationError: String? {
         guard let price = parsedPrice else {
-            return "Giá tiền phải là số nguyên không âm"
+            return "Price must be a non-negative number"
         }
         if price < 0 {
-            return "Giá tiền không được nhỏ hơn 0"
+            return "Price cannot be negative"
         }
         return nil
     }
 
     private var personValidationError: String? {
         if isSubmitted && selectedPerson == nil {
-            return "Vui lòng chọn người nhận quà"
+            return "Please select a recipient"
         }
         return nil
     }
@@ -67,21 +72,22 @@ struct AddEditGiftSheet: View {
         !trimmedTitle.isEmpty && selectedPerson != nil && parsedPrice != nil && (parsedPrice ?? 0) >= 0
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationStack {
             Form {
-                Section("Người nhận") {
+                Section("Recipient") {
                     if people.isEmpty {
-                        Text("Chưa có người nhận nào. Vui lòng thêm người nhận trước.")
+                        Text("No recipients available. Please add a recipient first.")
                             .font(.callout)
                             .foregroundStyle(Color("CranberryRed"))
                     } else {
-                        Picker("Chọn người nhận", selection: $selectedPerson) {
-                            Text("Chọn người nhận").tag(Person?.none)
+                        Picker("Select recipient", selection: $selectedPerson) {
+                            Text("Select recipient").tag(Person?.none)
                             ForEach(people) { person in
                                 Text(person.name).tag(Person?.some(person))
                             }
                         }
+                        .accessibilityLabel("Select recipient")
 
                         if let error = personValidationError {
                             Text(error)
@@ -91,9 +97,10 @@ struct AddEditGiftSheet: View {
                     }
                 }
 
-                Section("Thông tin món quà") {
+                Section("Gift Information") {
                     VStack(alignment: .leading, spacing: 4) {
-                        TextField("Tên món quà (bắt buộc)", text: $title)
+                        TextField("Gift title (required)", text: $title)
+                            .accessibilityLabel("Gift title")
 
                         if let error = titleValidationError {
                             Text(error)
@@ -104,11 +111,12 @@ struct AddEditGiftSheet: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Giá tiền (VNĐ)")
+                            Text("Price (VNĐ)")
                             Spacer()
                             TextField("0", text: $priceText)
                                 .keyboardType(.numberPad)
                                 .multilineTextAlignment(.trailing)
+                                .accessibilityLabel("Gift price")
                         }
 
                         if let error = priceValidationError {
@@ -118,66 +126,74 @@ struct AddEditGiftSheet: View {
                         }
 
                         if let price = parsedPrice, price > 0 {
-                            Text("Tương đương: \(Formatters.formatVND(price))")
+                            Text("Formatted: \(Formatters.formatVND(price))")
                                 .font(.caption2)
                                 .foregroundStyle(Color("PineGreen"))
                         }
                     }
 
-                    Picker("Dịp tặng", selection: $occasion) {
+                    Picker("Occasion", selection: $occasion) {
                         ForEach(Occasion.allCases) { occ in
                             Label(occ.title, systemImage: occ.systemImage).tag(occ)
                         }
                     }
+                    .accessibilityLabel("Occasion")
 
-                    Picker("Trạng thái", selection: $status) {
+                    Picker("Status", selection: $status) {
                         ForEach(GiftStatus.allCases) { st in
                             Label(st.title, systemImage: st.systemImage).tag(st)
                         }
                     }
+                    .accessibilityLabel("Status")
                 }
 
-                Section("Hạn cần có") {
-                    Toggle("Có thời hạn", isOn: $hasDueDate)
+                Section("Deadline") {
+                    Toggle("Has deadline", isOn: $hasDueDate.animation())
+                        .accessibilityLabel("Has deadline toggle")
 
                     if hasDueDate {
                         DatePicker(
-                            "Ngày hết hạn",
+                            "Due date",
                             selection: $dueDate,
                             displayedComponents: .date
                         )
                         .datePickerStyle(.graphical)
+                        .accessibilityLabel("Due date picker")
 
                         Button(role: .destructive) {
-                            hasDueDate = false
+                            withAnimation {
+                                hasDueDate = false
+                            }
                         } label: {
-                            Label("Bỏ hạn", systemImage: "xmark.circle")
+                            Label("Remove deadline", systemImage: "xmark.circle")
                                 .font(.callout)
                         }
                     }
                 }
 
-                Section("Chi tiết bổ sung") {
-                    TextField("Đường dẫn mua hàng (https://...)", text: $url)
+                Section("Additional Details") {
+                    TextField("Purchase link (https://...)", text: $url)
                         .keyboardType(.URL)
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
+                        .accessibilityLabel("Purchase link")
 
-                    TextField("Ghi chú (kích thước, màu sắc, ý tưởng...)", text: $note, axis: .vertical)
+                    TextField("Notes (size, color, store...)", text: $note, axis: .vertical)
                         .lineLimit(3...6)
+                        .accessibilityLabel("Gift notes")
                 }
             }
-            .navigationTitle(isEditing ? "Sửa quà tặng" : "Thêm quà tặng")
+            .navigationTitle(isEditing ? "Edit Gift" : "Add Gift")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Hủy") {
+                    Button("Cancel") {
                         dismiss()
                     }
                 }
 
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(isEditing ? "Lưu" : "Thêm") {
+                    Button(isEditing ? "Save" : "Add") {
                         save()
                     }
                     .fontWeight(.semibold)
@@ -197,7 +213,7 @@ struct AddEditGiftSheet: View {
             occasion = gift.occasion
             status = gift.status
             note = gift.note
-            url = gift.url
+            url = gift.url ?? ""
             selectedPerson = gift.person
             if let due = gift.dueDate {
                 hasDueDate = true
@@ -219,10 +235,11 @@ struct AddEditGiftSheet: View {
 
         let finalPrice = parsedPrice ?? 0
         let finalDueDate = hasDueDate ? dueDate : nil
+        let finalURL = url.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? nil : url.trimmingCharacters(in: .whitespacesAndNewlines)
 
         if let gift = giftToEdit {
             let previousPerson = gift.person
-            if previousPerson != person {
+            if previousPerson?.id != person.id {
                 previousPerson?.gifts.removeAll { $0.id == gift.id }
                 gift.person = person
                 person.gifts.append(gift)
@@ -233,9 +250,9 @@ struct AddEditGiftSheet: View {
             gift.dueDate = finalDueDate
             gift.occasion = occasion
             gift.note = note
-            gift.url = url
+            gift.url = finalURL
 
-            ReminderService.shared.scheduleReminder(for: gift)
+            ReminderService.shared.updateReminder(for: gift)
         } else {
             let newGift = Gift(
                 title: trimmedTitle,
@@ -244,16 +261,35 @@ struct AddEditGiftSheet: View {
                 dueDate: finalDueDate,
                 occasion: occasion,
                 note: note,
-                url: url,
+                url: finalURL,
                 person: person
             )
             person.gifts.append(newGift)
             modelContext.insert(newGift)
 
-            ReminderService.shared.scheduleReminder(for: newGift)
+            ReminderService.shared.updateReminder(for: newGift)
         }
 
         try? modelContext.save()
+
+        Task {
+            await ReminderService.shared.requestAuthorization()
+        }
+
         dismiss()
+    }
+}
+
+public struct GiftFormSheet: View {
+    public var gift: Gift? = nil
+    public var defaultPerson: Person? = nil
+
+    public init(gift: Gift? = nil, defaultPerson: Person? = nil) {
+        self.gift = gift
+        self.defaultPerson = defaultPerson
+    }
+
+    public var body: some View {
+        AddEditGiftSheet(giftToEdit: gift, preselectedPerson: defaultPerson)
     }
 }

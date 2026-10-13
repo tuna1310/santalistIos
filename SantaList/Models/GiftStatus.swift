@@ -1,82 +1,55 @@
-import Foundation
 import SwiftUI
 
-/// Trạng thái của món quà theo quy trình chuẩn bị
-public enum GiftStatus: Int, CaseIterable, Identifiable, Comparable, Codable {
-    case idea = 0      // Ý tưởng
-    case ordered = 1   // Đã đặt
-    case received = 2  // Đã nhận
-    case wrapped = 3   // Đã gói
+/// Gift shopping workflow status
+public enum GiftStatus: String, CaseIterable, Codable, Identifiable, Sendable {
+    case idea = "Idea"
+    case ordered = "Ordered"
+    case received = "Received"
+    case wrapped = "Wrapped"
 
-    public var id: Int { rawValue }
+    public var id: String { rawValue }
 
-    /// Nhãn hiển thị tiếng Việt
     public var title: String {
-        switch self {
-        case .idea:
-            return "Ý tưởng"
-        case .ordered:
-            return "Đã đặt"
-        case .received:
-            return "Đã nhận"
-        case .wrapped:
-            return "Đã gói"
-        }
+        rawValue
     }
 
-    /// Tên biểu tượng SF Symbol đại diện
+    /// SF Symbol for the status
     public var systemImage: String {
         switch self {
         case .idea:
-            return "lightbulb"
+            return "lightbulb.fill"
         case .ordered:
-            return "shippingbox"
+            return "cart.fill"
         case .received:
-            return "checkmark.circle"
+            return "shippingbox.fill"
         case .wrapped:
-            return "gift"
+            return "gift.fill"
         }
     }
 
-    /// Tên màu biểu thị trạng thái
-    public var colorName: String {
-        switch self {
-        case .idea:
-            return "WarmGold"
-        case .ordered:
-            return "WarmGold"
-        case .received:
-            return "PineGreen"
-        case .wrapped:
-            return "PineGreen"
-        }
-    }
-
-    /// Màu SwiftUI tương ứng
+    /// Color representation
     public var tintColor: Color {
         switch self {
         case .idea:
-            return Color("WarmGold")
+            return Color("WarmGold", bundle: nil)
         case .ordered:
             return Color.orange
-        case .received:
-            return Color("PineGreen")
-        case .wrapped:
-            return Color("PineGreen")
+        case .received, .wrapped:
+            return Color("PineGreen", bundle: nil)
         }
     }
 
-    /// Kiểm tra trạng thái đã hoàn thành (nhận hoặc gói)
+    /// Whether the gift is finished (Received or Wrapped)
     public var isCompleted: Bool {
         self == .received || self == .wrapped
     }
 
-    /// Kiểm tra trạng thái đã chi tiền (từ đã đặt trở lên)
-    public var isSpent: Bool {
-        self >= .ordered
+    /// Whether the gift price counts towards spent amount (Ordered, Received, or Wrapped)
+    public var isCountedAsSpent: Bool {
+        self == .ordered || self == .received || self == .wrapped
     }
 
-    /// Xoay vòng trạng thái kế tiếp: idea -> ordered -> received -> wrapped -> idea
+    /// Cyclic progression: Idea -> Ordered -> Received -> Wrapped -> Idea
     public func next() -> GiftStatus {
         switch self {
         case .idea:
@@ -88,9 +61,5 @@ public enum GiftStatus: Int, CaseIterable, Identifiable, Comparable, Codable {
         case .wrapped:
             return .idea
         }
-    }
-
-    public static func < (lhs: GiftStatus, rhs: GiftStatus) -> Bool {
-        lhs.rawValue < rhs.rawValue
     }
 }

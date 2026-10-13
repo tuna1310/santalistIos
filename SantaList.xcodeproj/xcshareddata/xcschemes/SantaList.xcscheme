@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1540"
+   LastUpgradeVersion = "1500"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      buildArchitectures = "Automatic">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A00000000000000000000001"
+               BlueprintIdentifier = "4001"
                BuildableName = "SantaList.app"
                BlueprintName = "SantaList"
                ReferencedContainer = "container:SantaList.xcodeproj">
@@ -29,9 +28,23 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A00000000000000000000002"
+               BlueprintIdentifier = "4002"
                BuildableName = "SantaListTests.xctest"
                BlueprintName = "SantaListTests"
+               ReferencedContainer = "container:SantaList.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4003"
+               BuildableName = "SantaListUITests.xctest"
+               BlueprintName = "SantaListUITests"
                ReferencedContainer = "container:SantaList.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -41,16 +54,25 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A00000000000000000000002"
+               BlueprintIdentifier = "4002"
                BuildableName = "SantaListTests.xctest"
                BlueprintName = "SantaListTests"
+               ReferencedContainer = "container:SantaList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4003"
+               BuildableName = "SantaListUITests.xctest"
+               BlueprintName = "SantaListUITests"
                ReferencedContainer = "container:SantaList.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -70,7 +92,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A00000000000000000000001"
+            BlueprintIdentifier = "4001"
             BuildableName = "SantaList.app"
             BlueprintName = "SantaList"
             ReferencedContainer = "container:SantaList.xcodeproj">
@@ -87,7 +109,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A00000000000000000000001"
+            BlueprintIdentifier = "4001"
             BuildableName = "SantaList.app"
             BlueprintName = "SantaList"
             ReferencedContainer = "container:SantaList.xcodeproj">
