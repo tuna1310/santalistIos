@@ -54,6 +54,49 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             2>&1 | tee build_sim.log
 
+      - name: Boot Virtual iOS Simulator & Launch App
+        run: |
+          echo "=== 1. Find and Boot iPhone Simulator ==="
+          UDID=$(xcrun simctl list devices available | grep -E "iPhone (15|16|SE)" | head -n 1 | grep -oE '[A-F0-9-]{36}')
+          if [ -z "$UDID" ]; then
+            UDID=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | grep -oE '[A-F0-9-]{36}')
+          fi
+          echo "Selected Simulator UDID: $UDID"
+          
+          xcrun simctl boot "$UDID" || true
+          xcrun simctl bootstatus "$UDID" -b
+          echo "Simulator booted successfully!"
+
+          echo "=== 2. Locate Built App & Install ==="
+          APP_PATH=$(find build_sim -name "SantaList.app" -type d | head -n 1)
+          echo "App path found: $APP_PATH"
+          xcrun simctl install "$UDID" "$APP_PATH"
+          echo "App installed on simulator!"
+
+          echo "=== 3. Launch App on Simulator ==="
+          BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP_PATH/Info.plist")
+          echo "App Bundle Identifier: $BUNDLE_ID"
+          LAUNCH_OUTPUT=$(xcrun simctl launch "$UDID" "$BUNDLE_ID")
+          echo "Launch result: $LAUNCH_OUTPUT"
+
+          echo "Waiting for app UI rendering (8s)..."
+          sleep 8
+
+          echo "=== 4. Capture Simulator Screenshot ==="
+          xcrun simctl io "$UDID" screenshot simulator_screenshot.png
+          ls -lh simulator_screenshot.png
+
+          echo "=== 5. Running Process Verification ==="
+          xcrun simctl spawn "$UDID" ps aux | grep -i "SantaList" || true
+
+      - name: Upload Simulator Screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: SantaList-Simulator-Screenshot
+          path: simulator_screenshot.png
+          if-no-files-found: error
+          retention-days: 30
+
       - name: Archive Release Device App (Unsigned arm64)
         run: |
           set -o pipefail
