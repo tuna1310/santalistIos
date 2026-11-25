@@ -111,7 +111,7 @@ public struct AddEditGiftSheet: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Price (VNĐ)")
+                            Text("Price")
                             Spacer()
                             TextField("0", text: $priceText)
                                 .keyboardType(.numberPad)

@@ -74,7 +74,7 @@ public struct AddEditPersonSheet: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Budget (VNĐ)")
+                            Text("Budget")
                             Spacer()
                             TextField("0", text: $budgetText)
                                 .keyboardType(.numberPad)
