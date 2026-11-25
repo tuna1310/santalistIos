@@ -19,6 +19,9 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: SantaList
+        excludes:
+          - "Info.plist"
+          - "Resources/Info.plist"
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.santalist.app
       INFOPLIST_FILE: SantaList/Resources/Info.plist
