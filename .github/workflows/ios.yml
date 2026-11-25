@@ -64,8 +64,16 @@ jobs:
           echo "Selected Simulator UDID: $UDID"
           
           xcrun simctl boot "$UDID" || true
-          xcrun simctl bootstatus "$UDID" -b
-          echo "Simulator booted successfully!"
+          
+          for i in $(seq 1 15); do
+            STATE=$(xcrun simctl list devices | grep "$UDID" | grep -o "Booted" || true)
+            if [ "$STATE" = "Booted" ]; then
+              echo "Simulator is in Booted state!"
+              break
+            fi
+            sleep 1
+          done
+          sleep 4
 
           echo "=== 2. Locate Built App & Install ==="
           APP_PATH=$(find build_sim -name "SantaList.app" -type d | head -n 1)
@@ -76,11 +84,11 @@ jobs:
           echo "=== 3. Launch App on Simulator ==="
           BUNDLE_ID=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP_PATH/Info.plist")
           echo "App Bundle Identifier: $BUNDLE_ID"
-          LAUNCH_OUTPUT=$(xcrun simctl launch "$UDID" "$BUNDLE_ID")
-          echo "Launch result: $LAUNCH_OUTPUT"
+          xcrun simctl launch "$UDID" "$BUNDLE_ID"
+          echo "App launched successfully!"
 
-          echo "Waiting for app UI rendering (8s)..."
-          sleep 8
+          echo "Waiting 6 seconds for app UI rendering..."
+          sleep 6
 
           echo "=== 4. Capture Simulator Screenshot ==="
           xcrun simctl io "$UDID" screenshot simulator_screenshot.png
@@ -88,6 +96,8 @@ jobs:
 
           echo "=== 5. Running Process Verification ==="
           xcrun simctl spawn "$UDID" ps aux | grep -i "SantaList" || true
+
+          xcrun simctl shutdown "$UDID" || true
 
       - name: Upload Simulator Screenshot
         uses: actions/upload-artifact@v4
