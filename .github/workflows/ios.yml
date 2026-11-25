@@ -1,0 +1,94 @@
+name: Build SantaList iOS (.ipa)
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-ios-ipa:
+    name: Build & Package SantaList Unsigned IPA
+    runs-on: macos-15
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          if [ -d "/Applications/Xcode.app/Contents/Developer" ]; then
+            sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+          elif [ -d "/Applications/Xcode_16.4.app/Contents/Developer" ]; then
+            sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
+          fi
+          xcodebuild -version
+
+      - name: Ensure Xcode Project (XcodeGen)
+        run: |
+          if [ -f "project.yml" ]; then
+            if ! command -v xcodegen >/dev/null 2>&1; then
+              brew install xcodegen
+            fi
+            xcodegen generate
+          fi
+          xcodebuild -list -project SantaList.xcodeproj
+
+      - name: Build for iOS Simulator (Debug)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project SantaList.xcodeproj \
+            -scheme SantaList \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -configuration Debug \
+            -derivedDataPath build_sim \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            2>&1 | tee build_sim.log
+
+      - name: Archive Release Device App (Unsigned arm64)
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -project SantaList.xcodeproj \
+            -scheme SantaList \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -configuration Release \
+            -archivePath build_archive/SantaList.xcarchive \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES \
+            DEVELOPMENT_TEAM="" \
+            2>&1 | tee build_archive.log
+
+      - name: Package & Ad-Hoc Sign Unsigned IPA
+        run: |
+          APP_PATH="build_archive/SantaList.xcarchive/Products/Applications/SantaList.app"
+          if [ ! -d "$APP_PATH" ]; then
+            echo "::error::SantaList.app not found at $APP_PATH"
+            exit 1
+          fi
+          mkdir -p Payload
+          cp -R "$APP_PATH" Payload/SantaList.app
+          codesign --force --deep --sign - --timestamp=none Payload/SantaList.app || true
+          zip -qry SantaList-unsigned.ipa Payload
+          ls -lh SantaList-unsigned.ipa
+
+      - name: Upload SantaList Unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: SantaList-unsigned-IPA
+          path: SantaList-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 30
